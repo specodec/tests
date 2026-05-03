@@ -1,4 +1,0 @@
-json = {};
-json.a = "world";
-json.b = "/w==";
-json.c = -0E0;
