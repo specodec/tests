@@ -1,3 +1,11 @@
 node_modules/
 output_ts/
 output_emit_ts/
+vectors/
+emit_ts/
+emit_go/
+emit_py/
+emit_rust/
+emit_dart/
+emit_kotlin/
+emit_swift/
