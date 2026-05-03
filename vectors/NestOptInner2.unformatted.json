@@ -1,0 +1,9 @@
+{"tag"    :  "world",  "nested" : {
+
+	"name" :   "world",
+
+	"score"    :  0,
+
+	"tag"   :"foo"
+
+}}

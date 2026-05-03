@@ -317,8 +317,14 @@ const scalars = {
   "uint64_max":  { value: BigInt("18446744073709551615"), type: "uint64" },
   "float32_1.5": { value: 1.5,                     type: "float32" },
   "float32_neg_zero": { value: -0.0,               type: "float32" },
+  "float32_inf":      { value: Infinity,            type: "float32" },
+  "float32_neg_inf":  { value: -Infinity,           type: "float32" },
+  "float32_nan":      { value: NaN,                 type: "float32" },
   "float64_pi":  { value: 3.14159265358979,        type: "float64" },
   "float64_neg_zero": { value: -0.0,               type: "float64" },
+  "float64_inf":      { value: Infinity,            type: "float64" },
+  "float64_neg_inf":  { value: -Infinity,           type: "float64" },
+  "float64_nan":      { value: NaN,                 type: "float64" },
   "str_empty":   { value: "",                      type: "string" },
   "str_ascii":   { value: "hello",                 type: "string" },
   "str_null_byte": { value: "a\x00b",              type: "string" },
@@ -646,7 +652,7 @@ const manifest = { scalars: {}, objects: {}, testModels };
 for (const [name, { value, type }] of Object.entries(scalars)) {
   manifest.scalars[name] = {
     type,
-    value: typeof value === "bigint" ? value.toString() : Buffer.isBuffer(value) ? value.toString("base64") : Object.is(value, -0.0) ? -0.0 : value,
+    value: typeof value === "bigint" ? value.toString() : Buffer.isBuffer(value) ? value.toString("base64") : Object.is(value, -0.0) ? -0.0 : (typeof value === "number" && !isFinite(value)) ? String(value) : value,
     valueType: typeof value === "bigint" ? "bigint" : Buffer.isBuffer(value) ? "bytes" : typeof value,
   };
 }
