@@ -1,11 +1,21 @@
 // verify.cjs — Byte-for-byte verification:
-// 1. TS output is the specodec canonical reference
-// 2. All other languages' outputs must be byte-identical to TS
-// 3. TS output is also verified against @msgpack/msgpack + JSON.parse for standard interop
+// Usage:
+//   node verify.cjs                          # Full multi-lang verification (Part 1 + Part 2)
+//   node verify.cjs --lang go --output /path/output_go --golden /path/golden
+//                                              # Single-lang mode (skip Part 1)
 
 const fs = require("fs");
 const path = require("path");
 const { decode: mpDecode } = require("@msgpack/msgpack");
+
+const args = process.argv.slice(2);
+const langIdx = args.indexOf("--lang");
+const outputIdx = args.indexOf("--output");
+const goldenIdx = args.indexOf("--golden");
+
+const SINGLE_LANG = langIdx >= 0 ? args[langIdx + 1] : null;
+const OUTPUT_DIR = outputIdx >= 0 ? args[outputIdx + 1] : null;
+const GOLDEN_DIR = goldenIdx >= 0 ? args[goldenIdx + 1] : null;
 
 const mpOpts = { useBigInt64: true };
 const BASE = __dirname;
@@ -36,8 +46,8 @@ function filesEqual(p1, p2) {
   return true;
 }
 
-const REF = path.join(BASE, "output_ts");
-const LANGS = ["py", "rust", "go", "kotlin", "dart", "swift"];
+const REF = GOLDEN_DIR || path.join(BASE, "golden");
+const LANGS = SINGLE_LANG ? [SINGLE_LANG] : ["py", "rust", "go", "kotlin", "dart", "swift"];
 
 // Track per-language comparison counts
 const langStats = {}; // { lang: { compared: 0, expected: 0 } }
@@ -47,7 +57,8 @@ for (const lang of LANGS) langStats[lang] = { compared: 0, expected: 0 };
 // Part 1: Verify TS output against standard libs (@msgpack/msgpack + JSON.parse)
 // ═══════════════════════════════════════════
 
-console.log("═══ Part 1: TS output vs @msgpack/msgpack + JSON.parse ═══");
+if (!SINGLE_LANG) {
+  console.log("═══ Part 1: TS output vs @msgpack/msgpack + JSON.parse ═══");
 
 const tsResults = JSON.parse(fs.readFileSync(path.join(REF, "results.json"), "utf-8"));
 
@@ -151,6 +162,7 @@ for (const [name, expectedRaw] of Object.entries(manifest.objects)) {
     });
   }
 }
+} // End if (!SINGLE_LANG)
 
 // ═══════════════════════════════════════════
 // Part 2: Byte-for-byte diff: all languages vs TS
@@ -175,7 +187,7 @@ for (const name of manifest.testModels) {
 const expectedPerLang = expectedScalars + expectedMp + expectedJson + expectedGron;
 
 for (const lang of LANGS) {
-  const OUT = path.join(BASE, "output_" + lang);
+  const OUT = OUTPUT_DIR || path.join(BASE, "output_" + lang);
   let langResults;
   try {
     langResults = JSON.parse(fs.readFileSync(path.join(OUT, "results.json"), "utf-8"));
