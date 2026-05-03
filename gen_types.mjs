@@ -532,6 +532,47 @@ function specodecPrettyJson(data) {
   return encodeObj(data, 0);
 }
 
+function randomFormatJson(data) {
+  const rand = (arr) => arr[Math.floor(Math.random() * arr.length)];
+  const spaceOpts = ["", " ", "  ", "   ", "    "];
+  const newlineOpts = ["", "\n", "\n\n"];
+  const indentOpts = ["", "  ", "    ", "\t"];
+  
+  function v(val, depth) {
+    if (typeof val === "bigint") return '"' + val.toString() + '"';
+    if (Buffer.isBuffer(val)) return '"' + val.toString("base64") + '"';
+    if (val === null || val === undefined) return "null";
+    if (Array.isArray(val)) {
+      if (val.length === 0) return "[]";
+      const sep = rand(newlineOpts);
+      if (sep === "") {
+        return "[" + val.map(item => v(item, depth)).join(rand(spaceOpts) + "," + rand(spaceOpts)) + "]";
+      }
+      const ind = rand(indentOpts).repeat(depth + 1);
+      const items = val.map(item => ind + v(item, depth + 1));
+      return "[" + sep + items.join("," + sep) + sep + rand(indentOpts).repeat(depth) + "]";
+    }
+    if (typeof val === "object") return encodeObj(val, depth + 1);
+    if (Object.is(val, -0.0)) return "-0";
+    return JSON.stringify(val);
+  }
+  
+  function encodeObj(o, depth) {
+    const keys = Object.keys(o);
+    if (keys.length === 0) return "{}";
+    const sep = rand(newlineOpts);
+    if (sep === "") {
+      const parts = keys.map(k => '"' + k + '"' + rand(spaceOpts) + ":" + rand(spaceOpts) + v(o[k], depth));
+      return "{" + parts.join(rand(spaceOpts) + "," + rand(spaceOpts)) + "}";
+    }
+    const ind = rand(indentOpts).repeat(depth);
+    const parts = keys.map(k => ind + '"' + k + '"' + rand(spaceOpts) + ":" + rand(spaceOpts) + v(o[k], depth));
+    return "{" + sep + parts.join("," + sep) + sep + rand(indentOpts).repeat(depth > 0 ? depth - 1 : 0) + "}";
+  }
+  
+  return encodeObj(data, 0);
+}
+
 // ═══════════════════════════════════════════
 // Specodec Gron encoder
 // ═══════════════════════════════════════════
@@ -591,7 +632,7 @@ for (const name of testModels) {
 
 for (const [name, data] of Object.entries(objects)) {
   fs.writeFileSync(path.join(VEC, name + ".json"), specodecJson(data, name));
-  fs.writeFileSync(path.join(VEC, name + ".pretty.json"), specodecPrettyJson(data));
+  fs.writeFileSync(path.join(VEC, name + ".unformatted.json"), randomFormatJson(data));
   fs.writeFileSync(path.join(VEC, name + ".gron"), specodecGron(data, name));
   fs.writeFileSync(path.join(VEC, name + ".msgpack"), mpEncode(data, mpOpts));
 }

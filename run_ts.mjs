@@ -252,7 +252,7 @@ function writeScalarGron(w, val, type) { writeScalarMP(w, val, type); }
 console.log("TS: processing objects...");
 
 for (const name of manifest.testModels) {
-  results.objects[name] = { mp: null, json: null, prettyJson: null, gron: null };
+  results.objects[name] = { mp: null, json: null, unformattedJson: null, gron: null };
 
   // MsgPack
   try {
@@ -279,22 +279,22 @@ for (const name of manifest.testModels) {
     console.error(`  FAIL ${name}.json: ${e.message}`);
   }
 
-  // Pretty JSON (decode from pretty → re-encode compact → compare with compact output)
+  // Unformatted JSON (decode from unformatted → re-encode compact → compare with compact output)
   try {
-    const prettyBuf = fs.readFileSync(path.join(VEC, name + ".pretty.json"));
-    const decoded = decodeModel(new JsonReader(new Uint8Array(prettyBuf)), name);
-    const prettyEncoded = encodeModelJSON(decoded, name);
-    if (compactEncoded && Buffer.from(prettyEncoded).equals(compactEncoded)) {
-      results.objects[name].prettyJson = true;
+    const unformattedBuf = fs.readFileSync(path.join(VEC, name + ".unformatted.json"));
+    const decoded = decodeModel(new JsonReader(new Uint8Array(unformattedBuf)), name);
+    const unformattedEncoded = encodeModelJSON(decoded, name);
+    if (compactEncoded && Buffer.from(unformattedEncoded).equals(compactEncoded)) {
+      results.objects[name].unformattedJson = true;
     } else if (compactEncoded) {
-      results.objects[name].prettyJson = false;
-      console.error(`  FAIL ${name}.pretty.json: re-encoded bytes differ`);
+      results.objects[name].unformattedJson = false;
+      console.error(`  FAIL ${name}.unformatted.json: re-encoded bytes differ`);
     } else {
-      results.objects[name].prettyJson = false;
+      results.objects[name].unformattedJson = false;
     }
   } catch (e) {
-    results.objects[name].prettyJson = false;
-    console.error(`  FAIL ${name}.pretty.json: ${e.message}`);
+    results.objects[name].unformattedJson = false;
+    console.error(`  FAIL ${name}.unformatted.json: ${e.message}`);
   }
 
   // Gron
@@ -314,8 +314,8 @@ for (const name of manifest.testModels) {
 // Write results
 fs.writeFileSync(path.join(OUT, "results.json"), JSON.stringify(results, null, 2));
 const totalPass = Object.values(results.scalars).filter(r => r.pass).length
-  + Object.values(results.objects).filter(r => r.mp === true && r.json === true && r.prettyJson === true && r.gron === true).length;
+  + Object.values(results.objects).filter(r => r.mp === true && r.json === true && r.unformattedJson === true && r.gron === true).length;
 const totalFail = Object.values(results.scalars).filter(r => !r.pass).length
-  + Object.values(results.objects).filter(r => r.mp !== true || r.json !== true || r.prettyJson !== true || r.gron !== true).length;
+  + Object.values(results.objects).filter(r => r.mp !== true || r.json !== true || r.unformattedJson !== true || r.gron !== true).length;
 console.log(`TS done: ${totalPass} passed, ${totalFail} failed`);
 if (totalFail > 0) process.exit(1);
