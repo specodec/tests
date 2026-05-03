@@ -1,9 +1,9 @@
 {
-"data": "AAEC",
-"inner": {
-  "data": "AAEC",
-  "inner": {
-    "data": "AAEC"
+"payload": "AAEC",
+"nested": {
+  "payload": "AAEC",
+  "nested": {
+    "payload": "AAEC"
   }
 }
 }

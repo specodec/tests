@@ -1,6 +1,6 @@
 json = {};
 json.tag = "world";
-json.inner = {};
-json.inner.name = "world";
-json.inner.score = 0E0;
-json.inner.tag = "foo";
+json.nested = {};
+json.nested.name = "world";
+json.nested.score = 0E0;
+json.nested.tag = "foo";

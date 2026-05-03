@@ -1,6 +1,6 @@
 json = {};
 json.id = "0";
-json.data = "/w==";
+json.payload = "/w==";
 json.checksum = 4294967295;
 json.prev = {};
 json.prev.id = "world";

@@ -1,6 +1,6 @@
 {
 "label": "world",
-"inner": {
+"nested": {
   "key": "world",
   "text": "test"
 }

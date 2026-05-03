@@ -1713,7 +1713,7 @@
         "isArray": true
       },
       {
-        "name": "data",
+        "name": "payload",
         "type": "bytes",
         "isArray": true
       }
@@ -2007,7 +2007,7 @@
   "NestInner": {
     "fields": [
       {
-        "name": "inner",
+        "name": "nested",
         "type": "Inner",
         "isModel": true
       }
@@ -2017,7 +2017,7 @@
   "NestCoord": {
     "fields": [
       {
-        "name": "inner",
+        "name": "nested",
         "type": "Coord",
         "isModel": true
       }
@@ -2027,7 +2027,7 @@
   "NestIdVal": {
     "fields": [
       {
-        "name": "inner",
+        "name": "nested",
         "type": "IdVal",
         "isModel": true
       }
@@ -2037,7 +2037,7 @@
   "NestLabel": {
     "fields": [
       {
-        "name": "inner",
+        "name": "nested",
         "type": "Label",
         "isModel": true
       }
@@ -2047,7 +2047,7 @@
   "NestMoney": {
     "fields": [
       {
-        "name": "inner",
+        "name": "nested",
         "type": "Money",
         "isModel": true
       }
@@ -2057,7 +2057,7 @@
   "NestRange32": {
     "fields": [
       {
-        "name": "inner",
+        "name": "nested",
         "type": "Range32",
         "isModel": true
       }
@@ -2067,7 +2067,7 @@
   "NestAddr": {
     "fields": [
       {
-        "name": "inner",
+        "name": "nested",
         "type": "Addr",
         "isModel": true
       }
@@ -2077,7 +2077,7 @@
   "NestPoint3": {
     "fields": [
       {
-        "name": "inner",
+        "name": "nested",
         "type": "Point3",
         "isModel": true
       }
@@ -2091,7 +2091,7 @@
         "type": "string"
       },
       {
-        "name": "inner",
+        "name": "nested",
         "type": "Inner",
         "optional": true,
         "isModel": true
@@ -2106,7 +2106,7 @@
         "type": "string"
       },
       {
-        "name": "inner",
+        "name": "nested",
         "type": "Coord",
         "optional": true,
         "isModel": true
@@ -2121,7 +2121,7 @@
         "type": "string"
       },
       {
-        "name": "inner",
+        "name": "nested",
         "type": "IdVal",
         "optional": true,
         "isModel": true
@@ -2136,7 +2136,7 @@
         "type": "string"
       },
       {
-        "name": "inner",
+        "name": "nested",
         "type": "Label",
         "optional": true,
         "isModel": true
@@ -2151,7 +2151,7 @@
         "type": "string"
       },
       {
-        "name": "inner",
+        "name": "nested",
         "type": "Money",
         "optional": true,
         "isModel": true
@@ -2166,7 +2166,7 @@
         "type": "string"
       },
       {
-        "name": "inner",
+        "name": "nested",
         "type": "Range32",
         "optional": true,
         "isModel": true
@@ -2181,7 +2181,7 @@
         "type": "string"
       },
       {
-        "name": "inner",
+        "name": "nested",
         "type": "Addr",
         "optional": true,
         "isModel": true
@@ -2196,7 +2196,7 @@
         "type": "string"
       },
       {
-        "name": "inner",
+        "name": "nested",
         "type": "Point3",
         "optional": true,
         "isModel": true
@@ -2317,7 +2317,7 @@
         "type": "string"
       },
       {
-        "name": "range",
+        "name": "value_range",
         "type": "Range32",
         "isModel": true
       },
@@ -2437,7 +2437,7 @@
         "type": "int64"
       },
       {
-        "name": "data",
+        "name": "payload",
         "type": "bytes"
       },
       {
@@ -2469,7 +2469,7 @@
         "type": "float64"
       },
       {
-        "name": "range",
+        "name": "value_range",
         "type": "Range32",
         "isModel": true
       }
@@ -2488,7 +2488,7 @@
         "isArray": true
       },
       {
-        "name": "inner",
+        "name": "nested",
         "type": "Inner",
         "optional": true,
         "isModel": true
@@ -2544,7 +2544,7 @@
         "type": "bytes"
       },
       {
-        "name": "inner",
+        "name": "nested",
         "type": "Inner",
         "isModel": true
       }
@@ -2573,12 +2573,12 @@
   "Mix15": {
     "fields": [
       {
-        "name": "from",
+        "name": "src_addr",
         "type": "Addr",
         "isModel": true
       },
       {
-        "name": "to",
+        "name": "dst_addr",
         "type": "Addr",
         "isModel": true
       },
@@ -2726,13 +2726,13 @@
         "type": "string"
       },
       {
-        "name": "left",
+        "name": "left_node",
         "type": "RecTree",
         "optional": true,
         "isModel": true
       },
       {
-        "name": "right",
+        "name": "right_node",
         "type": "RecTree",
         "optional": true,
         "isModel": true
@@ -2762,11 +2762,11 @@
   "RecWrap": {
     "fields": [
       {
-        "name": "data",
+        "name": "payload",
         "type": "bytes"
       },
       {
-        "name": "inner",
+        "name": "nested",
         "type": "RecWrap",
         "optional": true,
         "isModel": true
@@ -3492,7 +3492,7 @@
         "type": "boolean"
       },
       {
-        "name": "by",
+        "name": "by_field",
         "type": "bytes"
       }
     ],
@@ -3699,7 +3699,7 @@
   "OptArr4": {
     "fields": [
       {
-        "name": "data",
+        "name": "payload",
         "type": "bytes"
       },
       {
@@ -3772,7 +3772,7 @@
         "isModel": true
       },
       {
-        "name": "range",
+        "name": "value_range",
         "type": "Range32",
         "optional": true,
         "isModel": true
@@ -3829,7 +3829,7 @@
         "type": "string"
       },
       {
-        "name": "inner",
+        "name": "nested",
         "type": "OptInner",
         "optional": true,
         "isModel": true
@@ -3844,7 +3844,7 @@
         "type": "string"
       },
       {
-        "name": "inner",
+        "name": "nested",
         "type": "OptInner",
         "isModel": true
       }
@@ -3860,7 +3860,7 @@
         "isModel": true
       },
       {
-        "name": "inner",
+        "name": "nested",
         "type": "OptInner",
         "optional": true,
         "isModel": true
@@ -3875,7 +3875,7 @@
         "type": "string"
       },
       {
-        "name": "inner",
+        "name": "nested",
         "type": "Addr",
         "isModel": true
       }
@@ -3913,7 +3913,7 @@
         "isModel": true
       },
       {
-        "name": "range",
+        "name": "value_range",
         "type": "Range32",
         "isModel": true
       },
@@ -3934,7 +3934,7 @@
         "isModel": true
       },
       {
-        "name": "inner",
+        "name": "nested",
         "type": "Inner",
         "isModel": true
       },
@@ -4018,7 +4018,7 @@
         "type": "string"
       },
       {
-        "name": "data",
+        "name": "payload",
         "type": "bytes",
         "optional": true
       }

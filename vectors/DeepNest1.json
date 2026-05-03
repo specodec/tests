@@ -1,1 +1,1 @@
-{"label":"world","inner":{"street":"world","city":"test","zip":"foo"}}
+{"label":"world","nested":{"street":"world","city":"test","zip":"foo"}}

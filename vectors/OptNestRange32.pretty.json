@@ -1,6 +1,6 @@
 {
 "label": "world",
-"inner": {
+"nested": {
   "min": 0,
   "max": 2147483647
 }

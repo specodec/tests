@@ -127,7 +127,7 @@ for (const sc of ARR_SCALARS) {
 }
 
 addM("MultiArr1", [f("names","string",{isArray:true}), f("scores","int32",{isArray:true})]);
-addM("MultiArr2", [f("flags","boolean",{isArray:true}), f("values","float64",{isArray:true}), f("data","bytes",{isArray:true})]);
+addM("MultiArr2", [f("flags","boolean",{isArray:true}), f("values","float64",{isArray:true}), f("payload","bytes",{isArray:true})]);
 addM("MultiArr3", [f("a","string",{isArray:true}), f("b","int32",{isArray:true}), f("c","float64",{isArray:true})]);
 addM("MultiArr4", [f("ids","int64",{isArray:true}), f("tags","string",{isArray:true})]);
 addM("MultiArr5", [f("xs","uint64",{isArray:true}), f("ys","float32",{isArray:true}), f("zs","boolean",{isArray:true})]);
@@ -144,11 +144,11 @@ addM("OptCombo9", [f("id","string"), f("name","string",{optional:true}), f("age"
 addM("OptCombo10", [f("code","int32"), f("msg","string",{optional:true}), f("detail","string",{optional:true}), f("retry","boolean",{optional:true})]);
 
 for (const sub of SUB_MODELS) {
-  addM("Nest" + sub, [f("inner", sub, { isModel: true })]);
+  addM("Nest" + sub, [f("nested", sub, { isModel: true })]);
 }
 
 for (const sub of SUB_MODELS) {
-  addM("OptNest" + sub, [f("label","string"), f("inner", sub, { optional: true, isModel: true })]);
+  addM("OptNest" + sub, [f("label","string"), f("nested", sub, { optional: true, isModel: true })]);
 }
 
 addM("ModelArr1", [f("points","Inner",{isArray:true,isModel:true})]);
@@ -159,19 +159,19 @@ addM("ModelArr5", [f("arr","Money",{isArray:true,isModel:true}), f("bs","Addr",{
 
 addM("Mix01", [f("name","string"), f("value","int32"), f("point","Inner",{isModel:true})]);
 addM("Mix02", [f("id","string"), f("loc","Coord",{isModel:true}), f("tags","string",{isArray:true})]);
-addM("Mix03", [f("label","string"), f("range","Range32",{isModel:true}), f("active","boolean")]);
+addM("Mix03", [f("label","string"), f("value_range","Range32",{isModel:true}), f("active","boolean")]);
 addM("Mix04", [f("title","string"), f("price","Money",{isModel:true}), f("inStock","boolean"), f("rating","float64")]);
 addM("Mix05", [f("addr","Addr",{isModel:true}), f("coords","Coord",{isArray:true,isModel:true})]);
 addM("Mix06", [f("name","string"), f("age","int32"), f("address","Addr",{optional:true,isModel:true}), f("email","string",{optional:true})]);
 addM("Mix07", [f("origin","Point3",{isModel:true}), f("dest","Point3",{isModel:true}), f("distance","float64")]);
 addM("Mix08", [f("keys","string",{isArray:true}), f("values","int32",{isArray:true}), f("meta","Label",{optional:true,isModel:true})]);
-addM("Mix09", [f("id","int64"), f("data","bytes"), f("checksum","uint32"), f("prev","IdVal",{optional:true,isModel:true})]);
-addM("Mix10", [f("items","string",{isArray:true}), f("total","int32"), f("avg","float64"), f("range","Range32",{isModel:true})]);
-addM("Mix11", [f("name","string"), f("values","float64",{isArray:true}), f("inner","Inner",{optional:true,isModel:true}), f("flag","boolean",{optional:true})]);
+addM("Mix09", [f("id","int64"), f("payload","bytes"), f("checksum","uint32"), f("prev","IdVal",{optional:true,isModel:true})]);
+addM("Mix10", [f("items","string",{isArray:true}), f("total","int32"), f("avg","float64"), f("value_range","Range32",{isModel:true})]);
+addM("Mix11", [f("name","string"), f("values","float64",{isArray:true}), f("nested","Inner",{optional:true,isModel:true}), f("flag","boolean",{optional:true})]);
 addM("Mix12", [f("header","string"), f("entries","IdVal",{isArray:true,isModel:true}), f("footer","string",{optional:true})]);
-addM("Mix13", [f("a","int32"), f("b","float64"), f("c","string"), f("d","boolean"), f("e","bytes"), f("inner","Inner",{isModel:true})]);
+addM("Mix13", [f("a","int32"), f("b","float64"), f("c","string"), f("d","boolean"), f("e","bytes"), f("nested","Inner",{isModel:true})]);
 addM("Mix14", [f("amounts","Money",{isArray:true,isModel:true}), f("total","int64"), f("currency","string")]);
-addM("Mix15", [f("from","Addr",{isModel:true}), f("to","Addr",{isModel:true}), f("distance","float64"), f("duration","float64")]);
+addM("Mix15", [f("src_addr","Addr",{isModel:true}), f("dst_addr","Addr",{isModel:true}), f("distance","float64"), f("duration","float64")]);
 
 addM("AllOpt1", [f("a","string",{optional:true}), f("b","int32",{optional:true}), f("c","boolean",{optional:true})]);
 addM("AllOpt2", [f("x","float64",{optional:true}), f("y","bytes",{optional:true}), f("z","int64",{optional:true})]);
@@ -180,9 +180,9 @@ addM("AllOpt4", [f("a","uint32",{optional:true}), f("b","uint64",{optional:true}
 addM("AllOpt5", [f("p","Inner",{optional:true,isModel:true}), f("q","string",{optional:true})]);
 
 addM("RecList",   [f("value","int32"), f("next","RecList",{optional:true,isModel:true})], {recursive:true});
-addM("RecTree",   [f("value","string"), f("left","RecTree",{optional:true,isModel:true}), f("right","RecTree",{optional:true,isModel:true})], {recursive:true});
+addM("RecTree",   [f("value","string"), f("left_node","RecTree",{optional:true,isModel:true}), f("right_node","RecTree",{optional:true,isModel:true})], {recursive:true});
 addM("RecChain",  [f("id","int32"), f("label","string"), f("next","RecChain",{optional:true,isModel:true})], {recursive:true});
-addM("RecWrap",   [f("data","bytes"), f("inner","RecWrap",{optional:true,isModel:true})], {recursive:true});
+addM("RecWrap",   [f("payload","bytes"), f("nested","RecWrap",{optional:true,isModel:true})], {recursive:true});
 addM("RecWide",   [f("a","int32"), f("b","string"), f("c","float64"), f("child","RecWide",{optional:true,isModel:true})], {recursive:true});
 
 for (let w = 0; w < 5; w++) {
@@ -198,7 +198,7 @@ for (let w = 0; w < 5; w++) {
 addM("EdgeEmpty", []);
 addM("EdgeOneOpt", [f("maybe","string",{optional:true})]);
 addM("EdgeBigNums", [f("i8","int8"),f("i16","int16"),f("i32","int32"),f("i64","int64"),f("u8","uint8"),f("u16","uint16"),f("u32","uint32"),f("u64","uint64")]);
-addM("EdgeZeroVals", [f("s","string"),f("i","int32"),f("f","float64"),f("b","boolean"),f("by","bytes")]);
+addM("EdgeZeroVals", [f("s","string"),f("i","int32"),f("f","float64"),f("b","boolean"),f("by_field","bytes")]);
 addM("EdgeNullable", [f("a","string",{optional:true}),f("b","int32",{optional:true}),f("c","Inner",{optional:true,isModel:true}),f("d","string",{isArray:true,optional:true})]);
 addM("EdgeNegZero", [f("v","float64")]);
 addM("EdgeNullByte", [f("s","string"),f("b","bytes")]);
@@ -211,28 +211,28 @@ addM("EdgeArrBoundary", [f("a15","int32",{isArray:true}),f("a16","int32",{isArra
 addM("OptArr1", [f("req","string"), f("items","int32",{isArray:true,optional:true})]);
 addM("OptArr2", [f("id","int32"), f("names","string",{isArray:true,optional:true}), f("flags","boolean",{isArray:true,optional:true})]);
 addM("OptArr3", [f("a","string",{isArray:true,optional:true}), f("b","float64",{isArray:true,optional:true})]);
-addM("OptArr4", [f("data","bytes"), f("chunks","bytes",{isArray:true,optional:true})]);
+addM("OptArr4", [f("payload","bytes"), f("chunks","bytes",{isArray:true,optional:true})]);
 addM("OptArr5", [f("models","Inner",{isArray:true,isModel:true,optional:true}), f("name","string")]);
 
 addM("NestOpt1", [f("outer","Label",{isModel:true}), f("name","string")]);
 addM("NestOpt2", [f("a","IdVal",{optional:true,isModel:true}), f("b","IdVal",{optional:true,isModel:true}), f("c","IdVal",{optional:true,isModel:true})]);
-addM("NestOpt3", [f("money","Money",{isModel:true}), f("range","Range32",{optional:true,isModel:true})]);
+addM("NestOpt3", [f("money","Money",{isModel:true}), f("value_range","Range32",{optional:true,isModel:true})]);
 addM("NestOpt4", [f("addr","Addr",{optional:true,isModel:true}), f("coord","Coord",{optional:true,isModel:true}), f("name","string")]);
 addM("NestOpt5", [f("point","Point3",{isModel:true}), f("addr","Addr",{isModel:true}), f("label","Label",{optional:true,isModel:true})]);
 
-addM("NestOptInner1", [f("tag","string"), f("inner","OptInner",{optional:true,isModel:true})]);
-addM("NestOptInner2", [f("tag","string"), f("inner","OptInner",{isModel:true})]);
-addM("NestOptInner3", [f("outer","OptInner",{optional:true,isModel:true}), f("inner","OptInner",{optional:true,isModel:true})]);
+addM("NestOptInner1", [f("tag","string"), f("nested","OptInner",{optional:true,isModel:true})]);
+addM("NestOptInner2", [f("tag","string"), f("nested","OptInner",{isModel:true})]);
+addM("NestOptInner3", [f("outer","OptInner",{optional:true,isModel:true}), f("nested","OptInner",{optional:true,isModel:true})]);
 
-addM("DeepNest1", [f("label","string"), f("inner","Addr",{isModel:true})]);
+addM("DeepNest1", [f("label","string"), f("nested","Addr",{isModel:true})]);
 addM("DeepNest2", [f("name","string"), f("money","Money",{isModel:true}), f("addr","Addr",{isModel:true})]);
-addM("DeepNest3", [f("title","string"), f("point","Point3",{isModel:true}), f("range","Range32",{isModel:true}), f("money","Money",{isModel:true})]);
-addM("DeepNest4", [f("coords","Coord",{isArray:true,isModel:true}), f("inner","Inner",{isModel:true}), f("tag","string")]);
+addM("DeepNest3", [f("title","string"), f("point","Point3",{isModel:true}), f("value_range","Range32",{isModel:true}), f("money","Money",{isModel:true})]);
+addM("DeepNest4", [f("coords","Coord",{isArray:true,isModel:true}), f("nested","Inner",{isModel:true}), f("tag","string")]);
 addM("DeepNest5", [f("labels","Label",{isArray:true,isModel:true}), f("money","Money",{isModel:true}), f("name","string")]);
 addM("DeepNest6", [f("items","IdVal",{isArray:true,isModel:true}), f("addr","Addr",{optional:true,isModel:true}), f("coord","Coord",{isModel:true})]);
 addM("DeepNest7", [f("a","Addr",{isModel:true}), f("b","Addr",{isModel:true}), f("c","Addr",{isModel:true})]);
 
-addM("TimestampEntry", [f("ts","int64"), f("event","string"), f("data","bytes",{optional:true})]);
+addM("TimestampEntry", [f("ts","int64"), f("event","string"), f("payload","bytes",{optional:true})]);
 addM("ConfigEntry", [f("key","string"), f("intValue","int32",{optional:true}), f("strValue","string",{optional:true}), f("boolValue","boolean",{optional:true}), f("floatValue","float64",{optional:true})]);
 
 console.log(`Total models: ${modelOrder.length}`);
@@ -250,11 +250,11 @@ function tspType(type, opts = {}) {
 }
 
 function emitTSP() {
-  let out = 'import "@typespec/http";\n\nusing TypeSpec.Http;\n\nnamespace AllTypes {\n\n';
+  let out = 'import "@specodec/typespec-emitter-core";\n\nusing Specodec.Core;\n\nnamespace AllTypes {\n\n';
 
   for (const name of modelOrder) {
     const m = models[name];
-    out += `  model ${name} {\n`;
+    out += `  @specodec\n  model ${name} {\n`;
     for (const field of m.fields) {
       const opt = field.optional ? "?" : "";
       const t = tspType(field.type, field);
@@ -263,11 +263,7 @@ function emitTSP() {
     out += `  }\n\n`;
   }
 
-  out += "  interface TestService {\n";
-  for (const name of testModels) {
-    out += `    @post echo${name}(...${name}): ${name};\n`;
-  }
-  out += "  }\n}\n";
+  out += "}\n";
 
   const tspPath = path.join(SPECS, "alltypes.tsp");
   fs.writeFileSync(tspPath, out);

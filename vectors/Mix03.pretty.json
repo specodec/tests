@@ -1,6 +1,6 @@
 {
 "label": "world",
-"range": {
+"value_range": {
   "min": 0,
   "max": 2147483647
 },

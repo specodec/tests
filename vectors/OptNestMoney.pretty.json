@@ -1,6 +1,6 @@
 {
 "label": "world",
-"inner": {
+"nested": {
   "amount": "0",
   "currency": "test"
 }

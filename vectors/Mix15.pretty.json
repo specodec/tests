@@ -1,10 +1,10 @@
 {
-"from": {
+"src_addr": {
   "street": "world",
   "city": "test",
   "zip": "foo"
 },
-"to": {
+"dst_addr": {
   "street": "world",
   "city": "test",
   "zip": "foo"

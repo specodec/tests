@@ -1,4 +1,4 @@
 json = {};
-json.inner = {};
-json.inner.x = 0;
-json.inner.y = 2147483647;
+json.nested = {};
+json.nested.x = 0;
+json.nested.y = 2147483647;

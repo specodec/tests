@@ -1,4 +1,4 @@
 json = {};
-json.inner = {};
-json.inner.min = 0;
-json.inner.max = 2147483647;
+json.nested = {};
+json.nested.min = 0;
+json.nested.max = 2147483647;

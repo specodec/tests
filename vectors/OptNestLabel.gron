@@ -1,5 +1,5 @@
 json = {};
 json.label = "world";
-json.inner = {};
-json.inner.key = "world";
-json.inner.text = "test";
+json.nested = {};
+json.nested.key = "world";
+json.nested.text = "test";

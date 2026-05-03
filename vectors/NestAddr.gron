@@ -1,5 +1,5 @@
 json = {};
-json.inner = {};
-json.inner.street = "world";
-json.inner.city = "test";
-json.inner.zip = "foo";
+json.nested = {};
+json.nested.street = "world";
+json.nested.city = "test";
+json.nested.zip = "foo";

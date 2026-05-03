@@ -3,7 +3,7 @@
   "amount": "0",
   "currency": "test"
 },
-"range": {
+"value_range": {
   "min": 0,
   "max": 2147483647
 }

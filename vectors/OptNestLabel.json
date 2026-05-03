@@ -1,1 +1,1 @@
-{"label":"world","inner":{"key":"world","text":"test"}}
+{"label":"world","nested":{"key":"world","text":"test"}}

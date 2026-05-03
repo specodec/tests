@@ -1,4 +1,4 @@
 json = {};
-json.inner = {};
-json.inner.amount = "0";
-json.inner.currency = "test";
+json.nested = {};
+json.nested.amount = "0";
+json.nested.currency = "test";

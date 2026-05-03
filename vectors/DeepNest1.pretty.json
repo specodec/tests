@@ -1,6 +1,6 @@
 {
 "label": "world",
-"inner": {
+"nested": {
   "street": "world",
   "city": "test",
   "zip": "foo"

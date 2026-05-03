@@ -1,6 +1,6 @@
 json = {};
-json.data = "AAEC";
-json.inner = {};
-json.inner.data = "AAEC";
-json.inner.inner = {};
-json.inner.inner.data = "AAEC";
+json.payload = "AAEC";
+json.nested = {};
+json.nested.payload = "AAEC";
+json.nested.nested = {};
+json.nested.nested.payload = "AAEC";

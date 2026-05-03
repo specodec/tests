@@ -1,6 +1,6 @@
 json = {};
 json.label = "world";
-json.inner = {};
-json.inner.x = -3.14159265358979E0;
-json.inner.y = 0E0;
-json.inner.z = -0E0;
+json.nested = {};
+json.nested.x = -3.14159265358979E0;
+json.nested.y = 0E0;
+json.nested.z = -0E0;

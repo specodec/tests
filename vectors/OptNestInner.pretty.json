@@ -1,6 +1,6 @@
 {
 "label": "world",
-"inner": {
+"nested": {
   "x": 0,
   "y": 2147483647
 }

@@ -1,20 +1,20 @@
 {
 "value": "world",
-"left": {
+"left_node": {
   "value": "world",
-  "left": {
+  "left_node": {
     "value": "world"
   },
-  "right": {
+  "right_node": {
     "value": "world"
   }
 },
-"right": {
+"right_node": {
   "value": "world",
-  "left": {
+  "left_node": {
     "value": "world"
   },
-  "right": {
+  "right_node": {
     "value": "world"
   }
 }

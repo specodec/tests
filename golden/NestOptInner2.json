@@ -1,1 +1,1 @@
-{"tag":"world","inner":{"name":"world","score":0E0,"tag":"foo"}}
+{"tag":"world","nested":{"name":"world","score":0E0,"tag":"foo"}}

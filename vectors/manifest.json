@@ -1430,7 +1430,7 @@
         0,
         2.718281828
       ],
-      "data": [
+      "payload": [
         {
           "type": "Buffer",
           "data": [
@@ -2071,31 +2071,31 @@
       "retry": true
     },
     "NestInner": {
-      "inner": {
+      "nested": {
         "x": 0,
         "y": 2147483647
       }
     },
     "NestCoord": {
-      "inner": {
+      "nested": {
         "lat": -3.14159265358979,
         "lng": 0
       }
     },
     "NestIdVal": {
-      "inner": {
+      "nested": {
         "id": "world",
         "value": 2147483647
       }
     },
     "NestLabel": {
-      "inner": {
+      "nested": {
         "key": "world",
         "text": "test"
       }
     },
     "NestMoney": {
-      "inner": {
+      "nested": {
         "amount": {
           "__type": "bigint",
           "__value": "0"
@@ -2104,20 +2104,20 @@
       }
     },
     "NestRange32": {
-      "inner": {
+      "nested": {
         "min": 0,
         "max": 2147483647
       }
     },
     "NestAddr": {
-      "inner": {
+      "nested": {
         "street": "world",
         "city": "test",
         "zip": "foo"
       }
     },
     "NestPoint3": {
-      "inner": {
+      "nested": {
         "x": -3.14159265358979,
         "y": 0,
         "z": 0
@@ -2125,35 +2125,35 @@
     },
     "OptNestInner": {
       "label": "world",
-      "inner": {
+      "nested": {
         "x": 0,
         "y": 2147483647
       }
     },
     "OptNestCoord": {
       "label": "world",
-      "inner": {
+      "nested": {
         "lat": -3.14159265358979,
         "lng": 0
       }
     },
     "OptNestIdVal": {
       "label": "world",
-      "inner": {
+      "nested": {
         "id": "world",
         "value": 2147483647
       }
     },
     "OptNestLabel": {
       "label": "world",
-      "inner": {
+      "nested": {
         "key": "world",
         "text": "test"
       }
     },
     "OptNestMoney": {
       "label": "world",
-      "inner": {
+      "nested": {
         "amount": {
           "__type": "bigint",
           "__value": "0"
@@ -2163,14 +2163,14 @@
     },
     "OptNestRange32": {
       "label": "world",
-      "inner": {
+      "nested": {
         "min": 0,
         "max": 2147483647
       }
     },
     "OptNestAddr": {
       "label": "world",
-      "inner": {
+      "nested": {
         "street": "world",
         "city": "test",
         "zip": "foo"
@@ -2178,7 +2178,7 @@
     },
     "OptNestPoint3": {
       "label": "world",
-      "inner": {
+      "nested": {
         "x": -3.14159265358979,
         "y": 0,
         "z": 0
@@ -2289,7 +2289,7 @@
     },
     "Mix03": {
       "label": "world",
-      "range": {
+      "value_range": {
         "min": 0,
         "max": 2147483647
       },
@@ -2371,7 +2371,7 @@
         "__type": "bigint",
         "__value": "0"
       },
-      "data": {
+      "payload": {
         "type": "Buffer",
         "data": [
           255
@@ -2390,7 +2390,7 @@
       ],
       "total": 2147483647,
       "avg": 0,
-      "range": {
+      "value_range": {
         "min": 0,
         "max": 2147483647
       }
@@ -2402,7 +2402,7 @@
         0,
         2.718281828
       ],
-      "inner": {
+      "nested": {
         "x": 0,
         "y": 2147483647
       },
@@ -2500,7 +2500,7 @@
           255
         ]
       },
-      "inner": {
+      "nested": {
         "x": 0,
         "y": 2147483647
       }
@@ -2529,12 +2529,12 @@
       "currency": "foo"
     },
     "Mix15": {
-      "from": {
+      "src_addr": {
         "street": "world",
         "city": "test",
         "zip": "foo"
       },
-      "to": {
+      "dst_addr": {
         "street": "world",
         "city": "test",
         "zip": "foo"
@@ -2589,21 +2589,21 @@
     },
     "RecTree": {
       "value": "world",
-      "left": {
+      "left_node": {
         "value": "world",
-        "left": {
+        "left_node": {
           "value": "world"
         },
-        "right": {
+        "right_node": {
           "value": "world"
         }
       },
-      "right": {
+      "right_node": {
         "value": "world",
-        "left": {
+        "left_node": {
           "value": "world"
         },
-        "right": {
+        "right_node": {
           "value": "world"
         }
       }
@@ -2621,7 +2621,7 @@
       }
     },
     "RecWrap": {
-      "data": {
+      "payload": {
         "type": "Buffer",
         "data": [
           0,
@@ -2629,8 +2629,8 @@
           2
         ]
       },
-      "inner": {
-        "data": {
+      "nested": {
+        "payload": {
           "type": "Buffer",
           "data": [
             0,
@@ -2638,8 +2638,8 @@
             2
           ]
         },
-        "inner": {
-          "data": {
+        "nested": {
+          "payload": {
             "type": "Buffer",
             "data": [
               0,
@@ -3117,7 +3117,7 @@
       "i": 2147483647,
       "f": 0,
       "b": true,
-      "by": {
+      "by_field": {
         "type": "Buffer",
         "data": [
           255,
@@ -3874,7 +3874,7 @@
     },
     "OptArr3": {},
     "OptArr4": {
-      "data": {
+      "payload": {
         "type": "Buffer",
         "data": [
           0,
@@ -4263,7 +4263,7 @@
         },
         "currency": "test"
       },
-      "range": {
+      "value_range": {
         "min": 0,
         "max": 2147483647
       }
@@ -4301,7 +4301,7 @@
     },
     "NestOptInner2": {
       "tag": "world",
-      "inner": {
+      "nested": {
         "name": "world",
         "score": 0,
         "tag": "foo"
@@ -4310,7 +4310,7 @@
     "NestOptInner3": {},
     "DeepNest1": {
       "label": "world",
-      "inner": {
+      "nested": {
         "street": "world",
         "city": "test",
         "zip": "foo"
@@ -4338,7 +4338,7 @@
         "y": 0,
         "z": 0
       },
-      "range": {
+      "value_range": {
         "min": 0,
         "max": 2147483647
       },
@@ -4361,7 +4361,7 @@
           "lng": 0
         }
       ],
-      "inner": {
+      "nested": {
         "x": 0,
         "y": 2147483647
       },
@@ -4431,7 +4431,7 @@
         "__value": "0"
       },
       "event": "test",
-      "data": {
+      "payload": {
         "type": "Buffer",
         "data": [
           66,
