@@ -1,0 +1,5 @@
+json = {};
+json.inner = {};
+json.inner.street = "world";
+json.inner.city = "test";
+json.inner.zip = "foo";

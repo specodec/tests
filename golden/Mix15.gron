@@ -1,0 +1,11 @@
+json = {};
+json.from = {};
+json.from.street = "world";
+json.from.city = "test";
+json.from.zip = "foo";
+json.to = {};
+json.to.street = "world";
+json.to.city = "test";
+json.to.zip = "foo";
+json.distance = -0E0;
+json.duration = 2.718281828E0;

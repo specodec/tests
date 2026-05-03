@@ -1,0 +1,6 @@
+json = {};
+json.label = "world";
+json.range = {};
+json.range.min = 0;
+json.range.max = 2147483647;
+json.active = false;

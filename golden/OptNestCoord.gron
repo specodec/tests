@@ -1,0 +1,5 @@
+json = {};
+json.label = "world";
+json.inner = {};
+json.inner.lat = -3.14159265358979E0;
+json.inner.lng = 0E0;

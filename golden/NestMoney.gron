@@ -1,0 +1,4 @@
+json = {};
+json.inner = {};
+json.inner.amount = "0";
+json.inner.currency = "test";

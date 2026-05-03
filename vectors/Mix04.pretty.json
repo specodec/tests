@@ -1,0 +1,9 @@
+{
+"title": "world",
+"price": {
+  "amount": "0",
+  "currency": "test"
+},
+"inStock": false,
+"rating": 2.718281828
+}

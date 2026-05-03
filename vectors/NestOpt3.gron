@@ -1,0 +1,7 @@
+json = {};
+json.money = {};
+json.money.amount = "0";
+json.money.currency = "test";
+json.range = {};
+json.range.min = 0;
+json.range.max = 2147483647;

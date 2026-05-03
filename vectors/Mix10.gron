@@ -1,0 +1,9 @@
+json = {};
+json.items = [];
+json.items[0] = "world";
+json.items[1] = "test";
+json.total = 2147483647;
+json.avg = -0E0;
+json.range = {};
+json.range.min = 0;
+json.range.max = 2147483647;

@@ -1,0 +1,8 @@
+{
+"label": "world",
+"range": {
+  "min": 0,
+  "max": 2147483647
+},
+"active": false
+}

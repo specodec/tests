@@ -1,0 +1,4 @@
+json = {};
+json.inner = {};
+json.inner.key = "world";
+json.inner.text = "test";

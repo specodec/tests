@@ -8,7 +8,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const mpOpts = { useBigInt64: true };
 const BASE = __dirname;
 const VEC = path.join(BASE, "vectors");
-const SPECS = path.join(BASE, "..", "..", "specs");
+const SPECS = BASE;
 
 fs.mkdirSync(path.join(VEC, "scalars"), { recursive: true });
 
@@ -1740,6 +1740,7 @@ function generateEmitRunners(testModels, models) {
     path.join(BASE, 'emit_ts', 'src', 'dump_emit.ts'),
     generateTsDump(models));
 
+  fs.mkdirSync(path.join(BASE, 'emit_py'), { recursive: true });
   fs.writeFileSync(
     path.join(BASE, 'emit_py', 'run_emit.py'),
     generatePyRunner(testModels, models));
@@ -1747,6 +1748,7 @@ function generateEmitRunners(testModels, models) {
     path.join(BASE, 'emit_py', 'dump_emit.py'),
     generatePyDump(models));
 
+  fs.mkdirSync(path.join(BASE, 'emit_rust', 'src'), { recursive: true });
   fs.writeFileSync(
     path.join(BASE, 'emit_rust', 'src', 'run_emit_map.rs'),
     generateRustRunner(testModels, models));
@@ -1754,6 +1756,7 @@ function generateEmitRunners(testModels, models) {
     path.join(BASE, 'emit_rust', 'src', 'dump_emit.rs'),
     generateRustDump(models));
 
+  fs.mkdirSync(path.join(BASE, 'emit_go'), { recursive: true });
   fs.writeFileSync(
     path.join(BASE, 'emit_go', 'run_emit_map.go'),
     generateGoRunner(testModels, models));
@@ -1761,6 +1764,7 @@ function generateEmitRunners(testModels, models) {
     path.join(BASE, 'emit_go', 'dump_emit.go'),
     generateGoDump(models));
 
+  fs.mkdirSync(path.join(BASE, 'emit_kotlin', 'src'), { recursive: true });
   fs.writeFileSync(
     path.join(BASE, 'emit_kotlin', 'src', 'run_emit_map.kt'),
     generateKotlinRunner(testModels, models));

@@ -1,0 +1,1329 @@
+{
+  "scalars": {
+    "int8_min": {
+      "pass": true
+    },
+    "int8_max": {
+      "pass": true
+    },
+    "int16_min": {
+      "pass": true
+    },
+    "int16_max": {
+      "pass": true
+    },
+    "int32_min": {
+      "pass": true
+    },
+    "int32_max": {
+      "pass": true
+    },
+    "int64_min": {
+      "pass": true
+    },
+    "int64_max": {
+      "pass": true
+    },
+    "uint8_max": {
+      "pass": true
+    },
+    "uint16_max": {
+      "pass": true
+    },
+    "uint32_max": {
+      "pass": true
+    },
+    "uint64_max": {
+      "pass": true
+    },
+    "float32_1.5": {
+      "pass": true
+    },
+    "float32_neg_zero": {
+      "pass": true
+    },
+    "float64_pi": {
+      "pass": true
+    },
+    "float64_neg_zero": {
+      "pass": true
+    },
+    "str_empty": {
+      "pass": true
+    },
+    "str_ascii": {
+      "pass": true
+    },
+    "str_null_byte": {
+      "pass": true
+    },
+    "str_escape": {
+      "pass": true
+    },
+    "str_unicode": {
+      "pass": true
+    },
+    "str_31": {
+      "pass": true
+    },
+    "str_32": {
+      "pass": true
+    },
+    "str_255": {
+      "pass": true
+    },
+    "str_256": {
+      "pass": true
+    },
+    "bytes_empty": {
+      "pass": true
+    },
+    "bytes_small": {
+      "pass": true
+    },
+    "bytes_31": {
+      "pass": true
+    },
+    "bytes_32": {
+      "pass": true
+    },
+    "bytes_255": {
+      "pass": true
+    },
+    "bytes_256": {
+      "pass": true
+    },
+    "bytes_zeros": {
+      "pass": true
+    },
+    "bytes_ff": {
+      "pass": true
+    },
+    "bool_true": {
+      "pass": true
+    },
+    "bool_false": {
+      "pass": true
+    }
+  },
+  "objects": {
+    "OptInner": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "SingleString": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "SingleBoolean": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "SingleInt8": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "SingleInt16": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "SingleInt32": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "SingleInt64": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "SingleUint8": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "SingleUint16": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "SingleUint32": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "SingleUint64": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "SingleFloat32": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "SingleFloat64": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "SingleBytes": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptSingleString": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptSingleBoolean": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptSingleInt8": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptSingleInt16": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptSingleInt32": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptSingleInt64": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptSingleUint8": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptSingleUint16": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptSingleUint32": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptSingleUint64": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptSingleFloat32": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptSingleFloat64": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptSingleBytes": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "PairString": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "PairBoolean": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "PairInt8": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "PairInt16": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "PairInt32": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "PairInt64": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "PairUint8": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "PairUint16": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "PairUint32": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "PairUint64": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "PairFloat32": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "PairFloat64": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "PairBytes": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DualStringInt32": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DualStringBoolean": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DualStringFloat64": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DualStringBytes": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DualInt32Boolean": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DualInt32Float64": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DualInt32Int64": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DualInt32Uint32": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DualInt64Uint64": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DualFloat32Float64": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DualFloat64Boolean": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DualFloat64Bytes": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DualUint32Uint64": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DualBooleanBytes": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DualInt8Uint8": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DualInt16Uint16": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DualStringInt64": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DualStringUint64": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DualInt32Bytes": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DualFloat64Int32": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DualBooleanInt32": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DualBytesInt64": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DualInt8Float32": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DualUint8Int16": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DualInt64Float64": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DualUint64String": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Triple01": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Triple02": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Triple03": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Triple04": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Triple05": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Triple06": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Triple07": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Triple08": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Triple09": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Triple10": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Triple11": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Triple12": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Triple13": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Triple14": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Triple15": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Five01": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Five02": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Five03": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Five04": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Five05": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Five06": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Five07": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Five08": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Five09": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Five10": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Ten01": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Ten02": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Ten03": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Ten04": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Ten05": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "ArrString": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "ArrInt32": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "ArrBoolean": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "ArrFloat64": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "ArrBytes": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "ArrInt64": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "ArrUint64": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "MultiArr1": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "MultiArr2": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "MultiArr3": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "MultiArr4": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "MultiArr5": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptCombo1": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptCombo2": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptCombo3": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptCombo4": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptCombo5": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptCombo6": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptCombo7": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptCombo8": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptCombo9": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptCombo10": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "NestInner": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "NestCoord": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "NestIdVal": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "NestLabel": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "NestMoney": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "NestRange32": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "NestAddr": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "NestPoint3": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptNestInner": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptNestCoord": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptNestIdVal": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptNestLabel": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptNestMoney": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptNestRange32": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptNestAddr": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptNestPoint3": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "ModelArr1": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "ModelArr2": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "ModelArr3": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "ModelArr4": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "ModelArr5": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Mix01": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Mix02": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Mix03": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Mix04": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Mix05": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Mix06": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Mix07": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Mix08": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Mix09": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Mix10": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Mix11": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Mix12": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Mix13": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Mix14": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Mix15": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "AllOpt1": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "AllOpt2": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "AllOpt3": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "AllOpt4": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "AllOpt5": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "RecList": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "RecTree": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "RecChain": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "RecWrap": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "RecWide": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Wide20": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Wide25": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Wide30": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Wide35": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "Wide40": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "EdgeEmpty": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "EdgeOneOpt": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "EdgeBigNums": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "EdgeZeroVals": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "EdgeNullable": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "EdgeNegZero": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "EdgeNullByte": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "EdgeBoundary": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "EdgeStrLen": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "EdgeBytesLen": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "EdgeArrEmpty": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "EdgeArrBoundary": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptArr1": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptArr2": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptArr3": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptArr4": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "OptArr5": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "NestOpt1": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "NestOpt2": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "NestOpt3": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "NestOpt4": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "NestOpt5": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "NestOptInner1": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "NestOptInner2": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "NestOptInner3": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DeepNest1": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DeepNest2": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DeepNest3": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DeepNest4": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DeepNest5": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DeepNest6": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "DeepNest7": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "TimestampEntry": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    },
+    "ConfigEntry": {
+      "mp": true,
+      "json": true,
+      "prettyJson": true,
+      "gron": true
+    }
+  }
+}

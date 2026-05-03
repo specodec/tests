@@ -1,4 +1,3 @@
-vectors/
+node_modules/
 output_ts/
 output_emit_ts/
-node_modules/
