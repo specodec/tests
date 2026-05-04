@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { encode as mpEncode, decode as mpDecode } from "@msgpack/msgpack";
-import { JsonWriter, GronWriter } from "@specodec/specodec-ts";
+import { JsonWriter, GronWriter, MsgPackWriter } from "@specodec/specodec-ts";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const mpOpts = { useBigInt64: true };
@@ -346,8 +346,15 @@ const scalars = {
   "bool_false":  { value: false,                    type: "bool" },
 };
 
-for (const [name, { value }] of Object.entries(scalars)) {
-  fs.writeFileSync(path.join(VEC, "scalars", name + ".mp"), mpEncode(value, mpOpts));
+for (const [name, { value, type }] of Object.entries(scalars)) {
+  if (type === "float32") {
+    const buf = Buffer.allocUnsafe(5);
+    buf[0] = 0xCA;
+    new DataView(buf.buffer, buf.byteOffset, buf.byteLength).setFloat32(1, value, false);
+    fs.writeFileSync(path.join(VEC, "scalars", name + ".mp"), buf);
+  } else {
+    fs.writeFileSync(path.join(VEC, "scalars", name + ".mp"), mpEncode(value, mpOpts));
+  }
 }
 
 // ═══════════════════════════════════════════
@@ -627,6 +634,50 @@ function specodecGron(data, modelName) {
   return new TextDecoder().decode(w.toBytes());
 }
 
+function specodecMsgPack(data, modelName) {
+  const m = models[modelName];
+  
+  function writeByType(val, w, field) {
+    if (field.optional && (val === null || val === undefined)) { w.writeNull(); return; }
+    if (field.isArray) {
+      w.beginArray(val.length);
+      for (const item of val) { w.nextElement(); writeByType(item, w, { ...field, isArray: false }); }
+      w.endArray();
+      return;
+    }
+    if (field.isModel) { encodeObj(val, w, field.type); return; }
+    
+    switch (field.type) {
+      case "string": w.writeString(val); break;
+      case "boolean": w.writeBool(val); break;
+      case "int8": case "int16": case "int32": w.writeInt32(val); break;
+      case "int64": w.writeInt64(BigInt(val)); break;
+      case "uint8": case "uint16": case "uint32": w.writeUint32(val); break;
+      case "uint64": w.writeUint64(BigInt(val)); break;
+      case "float32": w.writeFloat32(val); break;
+      case "float64": w.writeFloat64(val); break;
+      case "bytes": w.writeBytes(new Uint8Array(val)); break;
+      default: throw new Error("Unknown type: " + field.type);
+    }
+  }
+  
+  function encodeObj(o, w, name) {
+    const model = models[name];
+    const presentFields = model.fields.filter(f => !(f.optional && (o[f.name] === null || o[f.name] === undefined)));
+    w.beginObject(presentFields.length);
+    for (const field of model.fields) {
+      if (field.optional && (o[field.name] === null || o[field.name] === undefined)) continue;
+      w.writeField(field.name);
+      writeByType(o[field.name], w, field);
+    }
+    w.endObject();
+  }
+  
+  const w = new MsgPackWriter();
+  encodeObj(data, w, modelName);
+  return w.toBytes();
+}
+
 // ═══════════════════════════════════════════
 // Generate object test vectors
 // ═══════════════════════════════════════════
@@ -640,7 +691,7 @@ for (const [name, data] of Object.entries(objects)) {
   fs.writeFileSync(path.join(VEC, name + ".json"), specodecJson(data, name));
   fs.writeFileSync(path.join(VEC, name + ".unformatted.json"), randomFormatJson(data));
   fs.writeFileSync(path.join(VEC, name + ".gron"), specodecGron(data, name));
-  fs.writeFileSync(path.join(VEC, name + ".msgpack"), mpEncode(data, mpOpts));
+  fs.writeFileSync(path.join(VEC, name + ".msgpack"), specodecMsgPack(data, name));
 }
 
 // ═══════════════════════════════════════════
