@@ -347,6 +347,18 @@ const scalars = {
 };
 
 function encodeScalar(value, type) {
+  if (type === "float32") {
+    const buf = Buffer.allocUnsafe(5);
+    buf[0] = 0xCA;
+    new DataView(buf.buffer, buf.byteOffset, buf.byteLength).setFloat32(1, value, false);
+    return buf;
+  }
+  if (type === "float64") {
+    const buf = Buffer.allocUnsafe(9);
+    buf[0] = 0xCB;
+    new DataView(buf.buffer, buf.byteOffset, buf.byteLength).setFloat64(1, value, false);
+    return buf;
+  }
   const w = new MsgPackWriter();
   switch (type) {
     case "string": w.writeString(value); break;
@@ -355,8 +367,6 @@ function encodeScalar(value, type) {
     case "int64": w.writeInt64(BigInt(value)); break;
     case "uint8": case "uint16": case "uint32": w.writeUint32(value); break;
     case "uint64": w.writeUint64(BigInt(value)); break;
-    case "float32": w.writeFloat32(value); break;
-    case "float64": case "float": case "decimal": w.writeFloat64(value); break;
     case "bytes": w.writeBytes(new Uint8Array(value)); break;
     default: return mpEncode(value, mpOpts);
   }
