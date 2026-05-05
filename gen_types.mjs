@@ -235,6 +235,15 @@ addM("DeepNest7", [f("a","Addr",{isModel:true}), f("b","Addr",{isModel:true}), f
 addM("TimestampEntry", [f("ts","int64"), f("event","string"), f("payload","bytes",{optional:true})]);
 addM("ConfigEntry", [f("key","string"), f("intValue","int32",{optional:true}), f("strValue","string",{optional:true}), f("boolValue","boolean",{optional:true}), f("floatValue","float64",{optional:true})]);
 
+const NESTED_MODELS = {
+  "NestedSimple": { namespace: ["nested"], fields: [f("name","string"), f("value","int32")] },
+  "DeepModel": { namespace: ["nested","deep"], fields: [f("data","bytes"), f("count","int64")] },
+};
+const NESTED_ORDER = Object.keys(NESTED_MODELS);
+for (const name of NESTED_ORDER) {
+  addM(name, NESTED_MODELS[name].fields);
+}
+
 console.log(`Total models: ${modelOrder.length}`);
 
 const testModels = modelOrder.filter(n => !SUB_MODELS.includes(n));
@@ -249,10 +258,24 @@ function tspType(type, opts = {}) {
   return type;
 }
 
+function emitModelTSP(name, indent) {
+  const m = models[name];
+  let s = '';
+  s += `${indent}@specodec\n${indent}model ${name} {\n`;
+  for (const field of m.fields) {
+    const opt = field.optional ? "?" : "";
+    const t = tspType(field.type, field);
+    s += `${indent}  ${field.name}${opt}: ${t};\n`;
+  }
+  s += `${indent}}\n\n`;
+  return s;
+}
+
 function emitTSP() {
   let out = 'import "@specodec/typespec-emitter-core";\n\nusing Specodec.Core;\n\nnamespace AllTypes {\n\n';
 
   for (const name of modelOrder) {
+    if (NESTED_MODELS[name]) continue;
     const m = models[name];
     out += `  @specodec\n  model ${name} {\n`;
     for (const field of m.fields) {
@@ -261,6 +284,22 @@ function emitTSP() {
       out += `    ${field.name}${opt}: ${t};\n`;
     }
     out += `  }\n\n`;
+  }
+
+  // Nested namespace models
+  if (NESTED_ORDER.length > 0) {
+    out += `  namespace nested {\n`;
+    for (const name of NESTED_ORDER) {
+      const spec = NESTED_MODELS[name];
+      if (spec.namespace.length > 1) {
+        out += `    namespace deep {\n`;
+        out += emitModelTSP(name, "      ");
+        out += `    }\n`;
+      } else {
+        out += emitModelTSP(name, "    ");
+      }
+    }
+    out += `  }\n`;
   }
 
   out += "}\n";

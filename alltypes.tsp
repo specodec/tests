@@ -1539,4 +1539,20 @@ namespace AllTypes {
     floatValue?: float64;
   }
 
+  namespace nested {
+    @specodec
+    model NestedSimple {
+      name: string;
+      value: int32;
+    }
+
+    namespace deep {
+      @specodec
+      model DeepModel {
+        data: bytes;
+        count: int64;
+      }
+
+    }
+  }
 }
