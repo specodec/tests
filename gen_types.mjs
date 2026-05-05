@@ -237,7 +237,7 @@ addM("ConfigEntry", [f("key","string"), f("intValue","int32",{optional:true}), f
 
 const NESTED_MODELS = {
   "NestedSimple": { namespace: ["nested"], fields: [f("name","string"), f("value","int32")] },
-  "DeepModel": { namespace: ["nested","deep"], fields: [f("data","bytes"), f("count","int64")] },
+  "DeepModel": { namespace: ["nested","deep"], fields: [f("payload","bytes"), f("count","int64")] },
 };
 const NESTED_ORDER = Object.keys(NESTED_MODELS);
 for (const name of NESTED_ORDER) {

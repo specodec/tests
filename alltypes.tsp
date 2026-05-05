@@ -1549,7 +1549,7 @@ namespace AllTypes {
     namespace deep {
       @specodec
       model DeepModel {
-        data: bytes;
+        payload: bytes;
         count: int64;
       }
 
