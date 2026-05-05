@@ -17,10 +17,13 @@ const SCALARS = ["string","boolean","int8","int16","int32","int64",
 
 const models = {};
 const modelOrder = [];
+let _ns = "AllTypes";
+
+function setNs(ns) { _ns = ns; }
 
 function addM(name, fields, opts = {}) {
   if (models[name]) throw new Error(`duplicate model: ${name}`);
-  models[name] = { name, fields, recursive: !!opts.recursive };
+  models[name] = { name, fields, recursive: !!opts.recursive, namespace: _ns };
   modelOrder.push(name);
 }
 
@@ -40,16 +43,19 @@ addM("OptInner",[f("name","string",{optional:true}), f("score","float64",{option
 
 const SUB_MODELS = ["Inner","Coord","IdVal","Label","Money","Range32","Addr","Point3"];
 
+setNs("AllTypes.Scalars"); // Singles
 for (const sc of SCALARS) {
   const cap = sc.charAt(0).toUpperCase() + sc.slice(1);
   addM("Single" + cap, [f("v", sc)]);
 }
 
+setNs("AllTypes.Opt"); // OptSingle + OptCombo + AllOpt
 for (const sc of SCALARS) {
   const cap = sc.charAt(0).toUpperCase() + sc.slice(1);
   addM("OptSingle" + cap, [f("v", sc, { optional: true })]);
 }
 
+setNs("AllTypes.Pairs"); // Pairs + Duals
 for (const sc of SCALARS) {
   const cap = sc.charAt(0).toUpperCase() + sc.slice(1);
   addM("Pair" + cap, [f("a", sc), f("b", sc)]);
@@ -94,6 +100,7 @@ for (let i = 0; i < TRIPLES.length; i++) {
   addM("Triple" + String(i + 1).padStart(2, "0"), fields);
 }
 
+setNs("AllTypes.Many"); // Triples + Fives + Tens
 const QUINCS = [
   ["string","int32","boolean","float64","bytes"],
   ["int32","int32","int32","int32","int32"],
@@ -120,6 +127,7 @@ for (let g = 0; g < 5; g++) {
   addM("Ten" + String(g + 1).padStart(2, "0"), fields);
 }
 
+setNs("AllTypes.Arrays"); // Arrays
 const ARR_SCALARS = ["string","int32","boolean","float64","bytes","int64","uint64"];
 for (const sc of ARR_SCALARS) {
   const cap = sc.charAt(0).toUpperCase() + sc.slice(1);
@@ -143,6 +151,7 @@ addM("OptCombo8", [f("a","string"), f("b","int32",{optional:true}), f("c","float
 addM("OptCombo9", [f("id","string"), f("name","string",{optional:true}), f("age","int32",{optional:true}), f("score","float64",{optional:true})]);
 addM("OptCombo10", [f("code","int32"), f("msg","string",{optional:true}), f("detail","string",{optional:true}), f("retry","boolean",{optional:true})]);
 
+setNs("AllTypes.Nests"); // Nest + OptNest + NestOpt + NestOptInner + DeepNest + OptInner
 for (const sub of SUB_MODELS) {
   addM("Nest" + sub, [f("nested", sub, { isModel: true })]);
 }
@@ -151,6 +160,7 @@ for (const sub of SUB_MODELS) {
   addM("OptNest" + sub, [f("label","string"), f("nested", sub, { optional: true, isModel: true })]);
 }
 
+setNs("AllTypes.Mixed"); // ModelArr + Mix
 addM("ModelArr1", [f("points","Inner",{isArray:true,isModel:true})]);
 addM("ModelArr2", [f("coords","Coord",{isArray:true,isModel:true})]);
 addM("ModelArr3", [f("items","IdVal",{isArray:true,isModel:true}), f("tag","string")]);
@@ -179,12 +189,14 @@ addM("AllOpt3", [f("name","string",{optional:true}), f("age","int32",{optional:t
 addM("AllOpt4", [f("a","uint32",{optional:true}), f("b","uint64",{optional:true}), f("c","int32",{optional:true}), f("d","string",{optional:true}), f("e","bytes",{optional:true})]);
 addM("AllOpt5", [f("p","Inner",{optional:true,isModel:true}), f("q","string",{optional:true})]);
 
+setNs("AllTypes.Recursive"); // Recursive
 addM("RecList",   [f("value","int32"), f("next","RecList",{optional:true,isModel:true})], {recursive:true});
 addM("RecTree",   [f("value","string"), f("left_node","RecTree",{optional:true,isModel:true}), f("right_node","RecTree",{optional:true,isModel:true})], {recursive:true});
 addM("RecChain",  [f("id","int32"), f("label","string"), f("next","RecChain",{optional:true,isModel:true})], {recursive:true});
 addM("RecWrap",   [f("payload","bytes"), f("nested","RecWrap",{optional:true,isModel:true})], {recursive:true});
 addM("RecWide",   [f("a","int32"), f("b","string"), f("c","float64"), f("child","RecWide",{optional:true,isModel:true})], {recursive:true});
 
+setNs("AllTypes.Wide"); // Wide models
 for (let w = 0; w < 5; w++) {
   const fields = [];
   const n = 20 + w * 5;
@@ -195,6 +207,7 @@ for (let w = 0; w < 5; w++) {
   addM("Wide" + String(n), fields);
 }
 
+setNs("AllTypes.Edge"); // Edge cases
 addM("EdgeEmpty", []);
 addM("EdgeOneOpt", [f("maybe","string",{optional:true})]);
 addM("EdgeBigNums", [f("i8","int8"),f("i16","int16"),f("i32","int32"),f("i64","int64"),f("u8","uint8"),f("u16","uint16"),f("u32","uint32"),f("u64","uint64")]);
@@ -208,6 +221,7 @@ addM("EdgeBytesLen", [f("b31","bytes"),f("b32","bytes"),f("b255","bytes"),f("b25
 addM("EdgeArrEmpty", [f("items","string",{isArray:true})]);
 addM("EdgeArrBoundary", [f("a15","int32",{isArray:true}),f("a16","int32",{isArray:true})]);
 
+setNs("AllTypes.Extra"); // OptArr + Timestamp + Config + NestedSimple + DeepModel
 addM("OptArr1", [f("req","string"), f("items","int32",{isArray:true,optional:true})]);
 addM("OptArr2", [f("id","int32"), f("names","string",{isArray:true,optional:true}), f("flags","boolean",{isArray:true,optional:true})]);
 addM("OptArr3", [f("a","string",{isArray:true,optional:true}), f("b","float64",{isArray:true,optional:true})]);
@@ -242,6 +256,9 @@ const NESTED_MODELS = {
 const NESTED_ORDER = Object.keys(NESTED_MODELS);
 for (const name of NESTED_ORDER) {
   addM(name, NESTED_MODELS[name].fields);
+  // Override namespace from config
+  const nsPath = NESTED_MODELS[name].namespace.join(".");
+  models[name].namespace = `AllTypes.${nsPath}`;
 }
 
 console.log(`Total models: ${modelOrder.length}`);
@@ -272,36 +289,33 @@ function emitModelTSP(name, indent) {
 }
 
 function emitTSP() {
-  let out = 'import "@specodec/typespec-emitter-core";\n\nusing Specodec.Core;\n\nnamespace AllTypes {\n\n';
-
+  // Group models by namespace
+  const nsModels = {};
   for (const name of modelOrder) {
-    if (NESTED_MODELS[name]) continue;
-    const m = models[name];
-    out += `  @specodec\n  model ${name} {\n`;
-    for (const field of m.fields) {
-      const opt = field.optional ? "?" : "";
-      const t = tspType(field.type, field);
-      out += `    ${field.name}${opt}: ${t};\n`;
-    }
-    out += `  }\n\n`;
+    const ns = models[name].namespace;
+    if (!nsModels[ns]) nsModels[ns] = [];
+    nsModels[ns].push(name);
   }
 
-  // Nested namespace models
-  if (NESTED_ORDER.length > 0) {
-    out += `  namespace nested {\n`;
-    for (const name of NESTED_ORDER) {
-      const spec = NESTED_MODELS[name];
-      if (spec.namespace.length > 1) {
-        out += `    namespace deep {\n`;
-        out += emitModelTSP(name, "      ");
-        out += `    }\n`;
-      } else {
-        out += emitModelTSP(name, "    ");
-      }
-    }
-    out += `  }\n`;
+  const ID = (d) => "  ".repeat(d);
+
+  function emitNS(ns, depth) {
+    const parts = ns.split(".");
+    const name = parts[depth];
+    const isLast = depth === parts.length - 1;
+    if (!isLast) return `${ID(depth)}namespace ${name} {\n${emitNS(ns, depth + 1)}${ID(depth)}}\n`;
+    let s = `${ID(depth)}namespace ${name} {\n`;
+    for (const mn of nsModels[ns]) s += emitModelTSP(mn, ID(depth + 1));
+    s += `${ID(depth)}}\n`;
+    return s;
   }
 
+  let out = 'import "@specodec/typespec-emitter-core";\n\nusing Specodec.Core;\n\nnamespace AllTypes {\n';
+  if (nsModels["AllTypes"]) for (const mn of nsModels["AllTypes"]) out += emitModelTSP(mn, "  ");
+  for (const ns of Object.keys(nsModels).sort()) {
+    if (ns === "AllTypes") continue;
+    out += emitNS(ns, 1);
+  }
   out += "}\n";
 
   const tspPath = path.join(SPECS, "alltypes.tsp");
@@ -757,7 +771,8 @@ for (const [name, data] of Object.entries(objects)) {
 // Generate manifest.json
 // ═══════════════════════════════════════════
 
-const manifest = { scalars: {}, objects: {}, testModels };
+const manifest = { scalars: {}, objects: {}, testModels, modelNamespaces: {} };
+for (const name of testModels) manifest.modelNamespaces[name] = models[name].namespace;
 
 for (const [name, { value, type }] of Object.entries(scalars)) {
   manifest.scalars[name] = {
