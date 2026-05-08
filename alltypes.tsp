@@ -296,6 +296,57 @@ namespace AllTypes {
     }
 
   }
+  namespace Enums {
+    @specodec
+    enum Color {
+      Red,
+      Green,
+      Blue,
+    }
+
+    @specodec
+    enum Priority {
+      Low,
+      Medium,
+      High,
+      Critical,
+    }
+
+    @specodec
+    enum Status {
+      Active,
+      Inactive,
+      Pending,
+      Archived,
+    }
+
+    @specodec
+    model EnumHolder {
+      color: Color;
+      priority: Priority;
+      status: Status;
+    }
+
+    @specodec
+    model OptEnumHolder {
+      color?: Color;
+      priority?: Priority;
+    }
+
+    @specodec
+    model EnumArrayHolder {
+      colors: Color[];
+    }
+
+    @specodec
+    model EnumMixedHolder {
+      status: Status;
+      name: string;
+      count: int32;
+      active: boolean;
+    }
+
+  }
   namespace Extra {
     @specodec
     model OptArr1 {
@@ -1385,6 +1436,60 @@ namespace AllTypes {
     @specodec
     model SingleBytes {
       v: bytes;
+    }
+
+  }
+  namespace Unions {
+    @specodec
+    union Shape {
+      circle: Coord,
+      rect: Range32,
+    }
+
+    @specodec
+    union Ident {
+      name: string,
+      number: int32,
+    }
+
+    @specodec
+    union ResultMsg {
+      ok: string,
+      err: Label,
+    }
+
+    @specodec
+    union Tagged {
+      tag: string,
+      score: float64,
+      active: boolean,
+    }
+
+    @specodec
+    union OptUnionHolder {
+      shape: Shape,
+      id: Ident,
+    }
+
+    @specodec
+    union MixedUnion {
+      point: Coord,
+      label: string,
+      count: int32,
+    }
+
+    @specodec
+    union NestedUnion {
+      result: ResultMsg,
+      shape: Shape,
+    }
+
+    @specodec
+    union ScalarUnion {
+      s: string,
+      i: int32,
+      f: float64,
+      b: boolean,
     }
 
   }
