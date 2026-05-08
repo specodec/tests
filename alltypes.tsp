@@ -1441,6 +1441,37 @@ namespace AllTypes {
   }
   namespace Unions {
     @specodec
+    model UnionFieldHolder {
+      shape: Shape;
+      id: Ident;
+    }
+
+    @specodec
+    model OptUnionFieldHolder {
+      shape?: Shape;
+      name: string;
+    }
+
+    @specodec
+    model UnionArrayHolder {
+      shapes: Shape[];
+    }
+
+    @specodec
+    model UnionMixedHolder {
+      result: ResultMsg;
+      tag: Tagged;
+      count: int32;
+    }
+
+    @specodec
+    model UnionScalarHolder {
+      id: Ident;
+      sc: ScalarUnion;
+      label: string;
+    }
+
+    @specodec
     union Shape {
       circle: Coord,
       rect: Range32,

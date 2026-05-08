@@ -345,6 +345,17 @@ addM("OptEnumHolder",    [f("color","Color",{optional:true}), f("priority","Prio
 addM("EnumArrayHolder",  [f("colors","Color",{isArray:true})]);
 addM("EnumMixedHolder",  [f("status","Status"), f("name","string"), f("count","int32"), f("active","boolean")]);
 
+// ═══════════════════════════════════════════
+// Models that hold unions
+// ═══════════════════════════════════════════
+
+setNs("AllTypes.Unions");
+addM("UnionFieldHolder",     [f("shape","Shape"), f("id","Ident")]);
+addM("OptUnionFieldHolder",  [f("shape","Shape",{optional:true}), f("name","string")]);
+addM("UnionArrayHolder",     [f("shapes","Shape",{isArray:true})]);
+addM("UnionMixedHolder",     [f("result","ResultMsg"), f("tag","Tagged"), f("count","int32")]);
+addM("UnionScalarHolder",    [f("id","Ident"), f("sc","ScalarUnion"), f("label","string")]);
+
 const testModels = modelOrder.filter(n => !SUB_MODELS.includes(n));
 
 console.log(`Total models: ${modelOrder.length}`);
