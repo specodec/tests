@@ -1,59 +1,59 @@
-import "@specodec/typespec-emitter-core";
+import "@codec/typespec-emitter-core";
 
-using Specodec.Core;
+using Specodec;
 
 namespace AllTypes {
-  @specodec
+  @codec
   model Inner {
     x: int32;
     y: int32;
   }
 
-  @specodec
+  @codec
   model Coord {
     lat: float64;
     lng: float64;
   }
 
-  @specodec
+  @codec
   model IdVal {
     id: string;
     value: int32;
   }
 
-  @specodec
+  @codec
   model Label {
     key: string;
     text: string;
   }
 
-  @specodec
+  @codec
   model Money {
     amount: int64;
     currency: string;
   }
 
-  @specodec
+  @codec
   model Range32 {
     min: int32;
     max: int32;
   }
 
-  @specodec
+  @codec
   model Addr {
     street: string;
     city: string;
     zip: string;
   }
 
-  @specodec
+  @codec
   model Point3 {
     x: float64;
     y: float64;
     z: float64;
   }
 
-  @specodec
+  @codec
   model OptInner {
     name?: string;
     score?: float64;
@@ -61,88 +61,88 @@ namespace AllTypes {
   }
 
   namespace Arrays {
-    @specodec
+    @codec
     model ArrString {
       items: string[];
     }
 
-    @specodec
+    @codec
     model ArrInt32 {
       items: int32[];
     }
 
-    @specodec
+    @codec
     model ArrBoolean {
       items: boolean[];
     }
 
-    @specodec
+    @codec
     model ArrFloat64 {
       items: float64[];
     }
 
-    @specodec
+    @codec
     model ArrBytes {
       items: bytes[];
     }
 
-    @specodec
+    @codec
     model ArrInt64 {
       items: int64[];
     }
 
-    @specodec
+    @codec
     model ArrUint64 {
       items: uint64[];
     }
 
-    @specodec
+    @codec
     model MultiArr1 {
       names: string[];
       scores: int32[];
     }
 
-    @specodec
+    @codec
     model MultiArr2 {
       flags: boolean[];
       values: float64[];
       payload: bytes[];
     }
 
-    @specodec
+    @codec
     model MultiArr3 {
       a: string[];
       b: int32[];
       c: float64[];
     }
 
-    @specodec
+    @codec
     model MultiArr4 {
       ids: int64[];
       tags: string[];
     }
 
-    @specodec
+    @codec
     model MultiArr5 {
       xs: uint64[];
       ys: float32[];
       zs: boolean[];
     }
 
-    @specodec
+    @codec
     model OptCombo1 {
       req: string;
       opt_a?: int32;
     }
 
-    @specodec
+    @codec
     model OptCombo2 {
       req: string;
       opt_a?: int32;
       opt_b?: boolean;
     }
 
-    @specodec
+    @codec
     model OptCombo3 {
       req: string;
       opt_a?: int32;
@@ -150,14 +150,14 @@ namespace AllTypes {
       opt_c?: float64;
     }
 
-    @specodec
+    @codec
     model OptCombo4 {
       req: int32;
       opt_a?: string;
       opt_b?: bytes;
     }
 
-    @specodec
+    @codec
     model OptCombo5 {
       req1: string;
       req2: int32;
@@ -165,7 +165,7 @@ namespace AllTypes {
       opt_b?: float64;
     }
 
-    @specodec
+    @codec
     model OptCombo6 {
       req: string;
       opt_s?: string;
@@ -174,14 +174,14 @@ namespace AllTypes {
       opt_b?: bytes;
     }
 
-    @specodec
+    @codec
     model OptCombo7 {
       req: int64;
       opt_u64?: uint64;
       opt_str?: string;
     }
 
-    @specodec
+    @codec
     model OptCombo8 {
       a: string;
       b?: int32;
@@ -191,7 +191,7 @@ namespace AllTypes {
       f?: int64;
     }
 
-    @specodec
+    @codec
     model OptCombo9 {
       id: string;
       name?: string;
@@ -199,7 +199,7 @@ namespace AllTypes {
       score?: float64;
     }
 
-    @specodec
+    @codec
     model OptCombo10 {
       code: int32;
       msg?: string;
@@ -209,16 +209,16 @@ namespace AllTypes {
 
   }
   namespace Edge {
-    @specodec
+    @codec
     model EdgeEmpty {
     }
 
-    @specodec
+    @codec
     model EdgeOneOpt {
       maybe?: string;
     }
 
-    @specodec
+    @codec
     model EdgeBigNums {
       i8: int8;
       i16: int16;
@@ -230,7 +230,7 @@ namespace AllTypes {
       u64: uint64;
     }
 
-    @specodec
+    @codec
     model EdgeZeroVals {
       s: string;
       i: int32;
@@ -239,7 +239,7 @@ namespace AllTypes {
       by_field: bytes;
     }
 
-    @specodec
+    @codec
     model EdgeNullable {
       a?: string;
       b?: int32;
@@ -247,18 +247,18 @@ namespace AllTypes {
       d?: string[];
     }
 
-    @specodec
+    @codec
     model EdgeNegZero {
       v: float64;
     }
 
-    @specodec
+    @codec
     model EdgeNullByte {
       s: string;
       b: bytes;
     }
 
-    @specodec
+    @codec
     model EdgeBoundary {
       i32_neg129: int32;
       i32_128: int32;
@@ -268,7 +268,7 @@ namespace AllTypes {
       u32_65536: uint32;
     }
 
-    @specodec
+    @codec
     model EdgeStrLen {
       s31: string;
       s32: string;
@@ -276,7 +276,7 @@ namespace AllTypes {
       s256: string;
     }
 
-    @specodec
+    @codec
     model EdgeBytesLen {
       b31: bytes;
       b32: bytes;
@@ -284,12 +284,12 @@ namespace AllTypes {
       b256: bytes;
     }
 
-    @specodec
+    @codec
     model EdgeArrEmpty {
       items: string[];
     }
 
-    @specodec
+    @codec
     model EdgeArrBoundary {
       a15: int32[];
       a16: int32[];
@@ -297,14 +297,14 @@ namespace AllTypes {
 
   }
   namespace Enums {
-    @specodec
+    @codec
     enum Color {
       Red,
       Green,
       Blue,
     }
 
-    @specodec
+    @codec
     enum Priority {
       Low,
       Medium,
@@ -312,7 +312,7 @@ namespace AllTypes {
       Critical,
     }
 
-    @specodec
+    @codec
     enum Status {
       Active,
       Inactive,
@@ -320,25 +320,25 @@ namespace AllTypes {
       Archived,
     }
 
-    @specodec
+    @codec
     model EnumHolder {
       color: Color;
       priority: Priority;
       status: Status;
     }
 
-    @specodec
+    @codec
     model OptEnumHolder {
       color?: Color;
       priority?: Priority;
     }
 
-    @specodec
+    @codec
     model EnumArrayHolder {
       colors: Color[];
     }
 
-    @specodec
+    @codec
     model EnumMixedHolder {
       status: Status;
       name: string;
@@ -348,102 +348,102 @@ namespace AllTypes {
 
   }
   namespace Extra {
-    @specodec
+    @codec
     model OptArr1 {
       req: string;
       items?: int32[];
     }
 
-    @specodec
+    @codec
     model OptArr2 {
       id: int32;
       names?: string[];
       flags?: boolean[];
     }
 
-    @specodec
+    @codec
     model OptArr3 {
       a?: string[];
       b?: float64[];
     }
 
-    @specodec
+    @codec
     model OptArr4 {
       payload: bytes;
       chunks?: bytes[];
     }
 
-    @specodec
+    @codec
     model OptArr5 {
       models?: Inner[];
       name: string;
     }
 
-    @specodec
+    @codec
     model NestOpt1 {
       outer: Label;
       name: string;
     }
 
-    @specodec
+    @codec
     model NestOpt2 {
       a?: IdVal;
       b?: IdVal;
       c?: IdVal;
     }
 
-    @specodec
+    @codec
     model NestOpt3 {
       money: Money;
       value_range?: Range32;
     }
 
-    @specodec
+    @codec
     model NestOpt4 {
       addr?: Addr;
       coord?: Coord;
       name: string;
     }
 
-    @specodec
+    @codec
     model NestOpt5 {
       point: Point3;
       addr: Addr;
       label?: Label;
     }
 
-    @specodec
+    @codec
     model NestOptInner1 {
       tag: string;
       nested?: OptInner;
     }
 
-    @specodec
+    @codec
     model NestOptInner2 {
       tag: string;
       nested: OptInner;
     }
 
-    @specodec
+    @codec
     model NestOptInner3 {
       outer?: OptInner;
       nested?: OptInner;
     }
 
-    @specodec
+    @codec
     model DeepNest1 {
       label: string;
       nested: Addr;
     }
 
-    @specodec
+    @codec
     model DeepNest2 {
       name: string;
       money: Money;
       addr: Addr;
     }
 
-    @specodec
+    @codec
     model DeepNest3 {
       title: string;
       point: Point3;
@@ -451,42 +451,42 @@ namespace AllTypes {
       money: Money;
     }
 
-    @specodec
+    @codec
     model DeepNest4 {
       coords: Coord[];
       nested: Inner;
       tag: string;
     }
 
-    @specodec
+    @codec
     model DeepNest5 {
       labels: Label[];
       money: Money;
       name: string;
     }
 
-    @specodec
+    @codec
     model DeepNest6 {
       items: IdVal[];
       addr?: Addr;
       coord: Coord;
     }
 
-    @specodec
+    @codec
     model DeepNest7 {
       a: Addr;
       b: Addr;
       c: Addr;
     }
 
-    @specodec
+    @codec
     model TimestampEntry {
       ts: int64;
       event: string;
       payload?: bytes;
     }
 
-    @specodec
+    @codec
     model ConfigEntry {
       key: string;
       intValue?: int32;
@@ -497,7 +497,7 @@ namespace AllTypes {
 
   }
   namespace Many {
-    @specodec
+    @codec
     model Five01 {
       f1: string;
       f2: int32;
@@ -506,7 +506,7 @@ namespace AllTypes {
       f5: bytes;
     }
 
-    @specodec
+    @codec
     model Five02 {
       f1: int32;
       f2: int32;
@@ -515,7 +515,7 @@ namespace AllTypes {
       f5: int32;
     }
 
-    @specodec
+    @codec
     model Five03 {
       f1: string;
       f2: string;
@@ -524,7 +524,7 @@ namespace AllTypes {
       f5: string;
     }
 
-    @specodec
+    @codec
     model Five04 {
       f1: float64;
       f2: int32;
@@ -533,7 +533,7 @@ namespace AllTypes {
       f5: bytes;
     }
 
-    @specodec
+    @codec
     model Five05 {
       f1: int64;
       f2: uint64;
@@ -542,7 +542,7 @@ namespace AllTypes {
       f5: int32;
     }
 
-    @specodec
+    @codec
     model Five06 {
       f1: boolean;
       f2: string;
@@ -551,7 +551,7 @@ namespace AllTypes {
       f5: uint32;
     }
 
-    @specodec
+    @codec
     model Five07 {
       f1: bytes;
       f2: bytes;
@@ -560,7 +560,7 @@ namespace AllTypes {
       f5: float64;
     }
 
-    @specodec
+    @codec
     model Five08 {
       f1: uint8;
       f2: uint16;
@@ -569,7 +569,7 @@ namespace AllTypes {
       f5: int16;
     }
 
-    @specodec
+    @codec
     model Five09 {
       f1: float32;
       f2: float64;
@@ -578,7 +578,7 @@ namespace AllTypes {
       f5: string;
     }
 
-    @specodec
+    @codec
     model Five10 {
       f1: string;
       f2: boolean;
@@ -587,7 +587,7 @@ namespace AllTypes {
       f5: float64;
     }
 
-    @specodec
+    @codec
     model Ten01 {
       f1: string;
       f2: boolean;
@@ -601,7 +601,7 @@ namespace AllTypes {
       f10: uint64;
     }
 
-    @specodec
+    @codec
     model Ten02 {
       f1: int16;
       f2: int32;
@@ -615,7 +615,7 @@ namespace AllTypes {
       f10: bytes;
     }
 
-    @specodec
+    @codec
     model Ten03 {
       f1: uint8;
       f2: uint16;
@@ -629,7 +629,7 @@ namespace AllTypes {
       f10: int8;
     }
 
-    @specodec
+    @codec
     model Ten04 {
       f1: uint64;
       f2: float32;
@@ -643,7 +643,7 @@ namespace AllTypes {
       f10: int64;
     }
 
-    @specodec
+    @codec
     model Ten05 {
       f1: bytes;
       f2: string;
@@ -659,56 +659,56 @@ namespace AllTypes {
 
   }
   namespace Mixed {
-    @specodec
+    @codec
     model ModelArr1 {
       points: Inner[];
     }
 
-    @specodec
+    @codec
     model ModelArr2 {
       coords: Coord[];
     }
 
-    @specodec
+    @codec
     model ModelArr3 {
       items: IdVal[];
       tag: string;
     }
 
-    @specodec
+    @codec
     model ModelArr4 {
       labels: Label[];
       count: int32;
     }
 
-    @specodec
+    @codec
     model ModelArr5 {
       arr: Money[];
       bs: Addr[];
     }
 
-    @specodec
+    @codec
     model Mix01 {
       name: string;
       value: int32;
       point: Inner;
     }
 
-    @specodec
+    @codec
     model Mix02 {
       id: string;
       loc: Coord;
       tags: string[];
     }
 
-    @specodec
+    @codec
     model Mix03 {
       label: string;
       value_range: Range32;
       active: boolean;
     }
 
-    @specodec
+    @codec
     model Mix04 {
       title: string;
       price: Money;
@@ -716,13 +716,13 @@ namespace AllTypes {
       rating: float64;
     }
 
-    @specodec
+    @codec
     model Mix05 {
       addr: Addr;
       coords: Coord[];
     }
 
-    @specodec
+    @codec
     model Mix06 {
       name: string;
       age: int32;
@@ -730,21 +730,21 @@ namespace AllTypes {
       email?: string;
     }
 
-    @specodec
+    @codec
     model Mix07 {
       origin: Point3;
       dest: Point3;
       distance: float64;
     }
 
-    @specodec
+    @codec
     model Mix08 {
       keys: string[];
       values: int32[];
       meta?: Label;
     }
 
-    @specodec
+    @codec
     model Mix09 {
       id: int64;
       payload: bytes;
@@ -752,7 +752,7 @@ namespace AllTypes {
       prev?: IdVal;
     }
 
-    @specodec
+    @codec
     model Mix10 {
       items: string[];
       total: int32;
@@ -760,7 +760,7 @@ namespace AllTypes {
       value_range: Range32;
     }
 
-    @specodec
+    @codec
     model Mix11 {
       name: string;
       values: float64[];
@@ -768,14 +768,14 @@ namespace AllTypes {
       flag?: boolean;
     }
 
-    @specodec
+    @codec
     model Mix12 {
       header: string;
       entries: IdVal[];
       footer?: string;
     }
 
-    @specodec
+    @codec
     model Mix13 {
       a: int32;
       b: float64;
@@ -785,14 +785,14 @@ namespace AllTypes {
       nested: Inner;
     }
 
-    @specodec
+    @codec
     model Mix14 {
       amounts: Money[];
       total: int64;
       currency: string;
     }
 
-    @specodec
+    @codec
     model Mix15 {
       src_addr: Addr;
       dst_addr: Addr;
@@ -800,21 +800,21 @@ namespace AllTypes {
       duration: float64;
     }
 
-    @specodec
+    @codec
     model AllOpt1 {
       a?: string;
       b?: int32;
       c?: boolean;
     }
 
-    @specodec
+    @codec
     model AllOpt2 {
       x?: float64;
       y?: bytes;
       z?: int64;
     }
 
-    @specodec
+    @codec
     model AllOpt3 {
       name?: string;
       age?: int32;
@@ -822,7 +822,7 @@ namespace AllTypes {
       active?: boolean;
     }
 
-    @specodec
+    @codec
     model AllOpt4 {
       a?: uint32;
       b?: uint64;
@@ -831,7 +831,7 @@ namespace AllTypes {
       e?: bytes;
     }
 
-    @specodec
+    @codec
     model AllOpt5 {
       p?: Inner;
       q?: string;
@@ -839,89 +839,89 @@ namespace AllTypes {
 
   }
   namespace Nests {
-    @specodec
+    @codec
     model NestInner {
       nested: Inner;
     }
 
-    @specodec
+    @codec
     model NestCoord {
       nested: Coord;
     }
 
-    @specodec
+    @codec
     model NestIdVal {
       nested: IdVal;
     }
 
-    @specodec
+    @codec
     model NestLabel {
       nested: Label;
     }
 
-    @specodec
+    @codec
     model NestMoney {
       nested: Money;
     }
 
-    @specodec
+    @codec
     model NestRange32 {
       nested: Range32;
     }
 
-    @specodec
+    @codec
     model NestAddr {
       nested: Addr;
     }
 
-    @specodec
+    @codec
     model NestPoint3 {
       nested: Point3;
     }
 
-    @specodec
+    @codec
     model OptNestInner {
       label: string;
       nested?: Inner;
     }
 
-    @specodec
+    @codec
     model OptNestCoord {
       label: string;
       nested?: Coord;
     }
 
-    @specodec
+    @codec
     model OptNestIdVal {
       label: string;
       nested?: IdVal;
     }
 
-    @specodec
+    @codec
     model OptNestLabel {
       label: string;
       nested?: Label;
     }
 
-    @specodec
+    @codec
     model OptNestMoney {
       label: string;
       nested?: Money;
     }
 
-    @specodec
+    @codec
     model OptNestRange32 {
       label: string;
       nested?: Range32;
     }
 
-    @specodec
+    @codec
     model OptNestAddr {
       label: string;
       nested?: Addr;
     }
 
-    @specodec
+    @codec
     model OptNestPoint3 {
       label: string;
       nested?: Point3;
@@ -929,406 +929,406 @@ namespace AllTypes {
 
   }
   namespace Opt {
-    @specodec
+    @codec
     model OptSingleString {
       v?: string;
     }
 
-    @specodec
+    @codec
     model OptSingleBoolean {
       v?: boolean;
     }
 
-    @specodec
+    @codec
     model OptSingleInt8 {
       v?: int8;
     }
 
-    @specodec
+    @codec
     model OptSingleInt16 {
       v?: int16;
     }
 
-    @specodec
+    @codec
     model OptSingleInt32 {
       v?: int32;
     }
 
-    @specodec
+    @codec
     model OptSingleInt64 {
       v?: int64;
     }
 
-    @specodec
+    @codec
     model OptSingleUint8 {
       v?: uint8;
     }
 
-    @specodec
+    @codec
     model OptSingleUint16 {
       v?: uint16;
     }
 
-    @specodec
+    @codec
     model OptSingleUint32 {
       v?: uint32;
     }
 
-    @specodec
+    @codec
     model OptSingleUint64 {
       v?: uint64;
     }
 
-    @specodec
+    @codec
     model OptSingleFloat32 {
       v?: float32;
     }
 
-    @specodec
+    @codec
     model OptSingleFloat64 {
       v?: float64;
     }
 
-    @specodec
+    @codec
     model OptSingleBytes {
       v?: bytes;
     }
 
   }
   namespace Pairs {
-    @specodec
+    @codec
     model PairString {
       a: string;
       b: string;
     }
 
-    @specodec
+    @codec
     model PairBoolean {
       a: boolean;
       b: boolean;
     }
 
-    @specodec
+    @codec
     model PairInt8 {
       a: int8;
       b: int8;
     }
 
-    @specodec
+    @codec
     model PairInt16 {
       a: int16;
       b: int16;
     }
 
-    @specodec
+    @codec
     model PairInt32 {
       a: int32;
       b: int32;
     }
 
-    @specodec
+    @codec
     model PairInt64 {
       a: int64;
       b: int64;
     }
 
-    @specodec
+    @codec
     model PairUint8 {
       a: uint8;
       b: uint8;
     }
 
-    @specodec
+    @codec
     model PairUint16 {
       a: uint16;
       b: uint16;
     }
 
-    @specodec
+    @codec
     model PairUint32 {
       a: uint32;
       b: uint32;
     }
 
-    @specodec
+    @codec
     model PairUint64 {
       a: uint64;
       b: uint64;
     }
 
-    @specodec
+    @codec
     model PairFloat32 {
       a: float32;
       b: float32;
     }
 
-    @specodec
+    @codec
     model PairFloat64 {
       a: float64;
       b: float64;
     }
 
-    @specodec
+    @codec
     model PairBytes {
       a: bytes;
       b: bytes;
     }
 
-    @specodec
+    @codec
     model DualStringInt32 {
       a: string;
       b: int32;
     }
 
-    @specodec
+    @codec
     model DualStringBoolean {
       a: string;
       b: boolean;
     }
 
-    @specodec
+    @codec
     model DualStringFloat64 {
       a: string;
       b: float64;
     }
 
-    @specodec
+    @codec
     model DualStringBytes {
       a: string;
       b: bytes;
     }
 
-    @specodec
+    @codec
     model DualInt32Boolean {
       a: int32;
       b: boolean;
     }
 
-    @specodec
+    @codec
     model DualInt32Float64 {
       a: int32;
       b: float64;
     }
 
-    @specodec
+    @codec
     model DualInt32Int64 {
       a: int32;
       b: int64;
     }
 
-    @specodec
+    @codec
     model DualInt32Uint32 {
       a: int32;
       b: uint32;
     }
 
-    @specodec
+    @codec
     model DualInt64Uint64 {
       a: int64;
       b: uint64;
     }
 
-    @specodec
+    @codec
     model DualFloat32Float64 {
       a: float32;
       b: float64;
     }
 
-    @specodec
+    @codec
     model DualFloat64Boolean {
       a: float64;
       b: boolean;
     }
 
-    @specodec
+    @codec
     model DualFloat64Bytes {
       a: float64;
       b: bytes;
     }
 
-    @specodec
+    @codec
     model DualUint32Uint64 {
       a: uint32;
       b: uint64;
     }
 
-    @specodec
+    @codec
     model DualBooleanBytes {
       a: boolean;
       b: bytes;
     }
 
-    @specodec
+    @codec
     model DualInt8Uint8 {
       a: int8;
       b: uint8;
     }
 
-    @specodec
+    @codec
     model DualInt16Uint16 {
       a: int16;
       b: uint16;
     }
 
-    @specodec
+    @codec
     model DualStringInt64 {
       a: string;
       b: int64;
     }
 
-    @specodec
+    @codec
     model DualStringUint64 {
       a: string;
       b: uint64;
     }
 
-    @specodec
+    @codec
     model DualInt32Bytes {
       a: int32;
       b: bytes;
     }
 
-    @specodec
+    @codec
     model DualFloat64Int32 {
       a: float64;
       b: int32;
     }
 
-    @specodec
+    @codec
     model DualBooleanInt32 {
       a: boolean;
       b: int32;
     }
 
-    @specodec
+    @codec
     model DualBytesInt64 {
       a: bytes;
       b: int64;
     }
 
-    @specodec
+    @codec
     model DualInt8Float32 {
       a: int8;
       b: float32;
     }
 
-    @specodec
+    @codec
     model DualUint8Int16 {
       a: uint8;
       b: int16;
     }
 
-    @specodec
+    @codec
     model DualInt64Float64 {
       a: int64;
       b: float64;
     }
 
-    @specodec
+    @codec
     model DualUint64String {
       a: uint64;
       b: string;
     }
 
-    @specodec
+    @codec
     model Triple01 {
       a: string;
       b: int32;
       c: boolean;
     }
 
-    @specodec
+    @codec
     model Triple02 {
       a: float64;
       b: float64;
       c: float64;
     }
 
-    @specodec
+    @codec
     model Triple03 {
       a: int32;
       b: int32;
       c: int32;
     }
 
-    @specodec
+    @codec
     model Triple04 {
       a: string;
       b: string;
       c: int32;
     }
 
-    @specodec
+    @codec
     model Triple05 {
       a: int64;
       b: string;
       c: boolean;
     }
 
-    @specodec
+    @codec
     model Triple06 {
       a: uint32;
       b: uint64;
       c: string;
     }
 
-    @specodec
+    @codec
     model Triple07 {
       a: bytes;
       b: string;
       c: int32;
     }
 
-    @specodec
+    @codec
     model Triple08 {
       a: float32;
       b: int32;
       c: boolean;
     }
 
-    @specodec
+    @codec
     model Triple09 {
       a: string;
       b: int64;
       c: float64;
     }
 
-    @specodec
+    @codec
     model Triple10 {
       a: boolean;
       b: boolean;
       c: boolean;
     }
 
-    @specodec
+    @codec
     model Triple11 {
       a: int8;
       b: int16;
       c: int32;
     }
 
-    @specodec
+    @codec
     model Triple12 {
       a: uint8;
       b: uint16;
       c: uint32;
     }
 
-    @specodec
+    @codec
     model Triple13 {
       a: string;
       b: bytes;
       c: float64;
     }
 
-    @specodec
+    @codec
     model Triple14 {
       a: int64;
       b: uint64;
       c: boolean;
     }
 
-    @specodec
+    @codec
     model Triple15 {
       a: float64;
       b: string;
@@ -1337,33 +1337,33 @@ namespace AllTypes {
 
   }
   namespace Recursive {
-    @specodec
+    @codec
     model RecList {
       value: int32;
       next?: RecList;
     }
 
-    @specodec
+    @codec
     model RecTree {
       value: string;
       left_node?: RecTree;
       right_node?: RecTree;
     }
 
-    @specodec
+    @codec
     model RecChain {
       id: int32;
       label: string;
       next?: RecChain;
     }
 
-    @specodec
+    @codec
     model RecWrap {
       payload: bytes;
       nested?: RecWrap;
     }
 
-    @specodec
+    @codec
     model RecWide {
       a: int32;
       b: string;
@@ -1373,149 +1373,149 @@ namespace AllTypes {
 
   }
   namespace Scalars {
-    @specodec
+    @codec
     model SingleString {
       v: string;
     }
 
-    @specodec
+    @codec
     model SingleBoolean {
       v: boolean;
     }
 
-    @specodec
+    @codec
     model SingleInt8 {
       v: int8;
     }
 
-    @specodec
+    @codec
     model SingleInt16 {
       v: int16;
     }
 
-    @specodec
+    @codec
     model SingleInt32 {
       v: int32;
     }
 
-    @specodec
+    @codec
     model SingleInt64 {
       v: int64;
     }
 
-    @specodec
+    @codec
     model SingleUint8 {
       v: uint8;
     }
 
-    @specodec
+    @codec
     model SingleUint16 {
       v: uint16;
     }
 
-    @specodec
+    @codec
     model SingleUint32 {
       v: uint32;
     }
 
-    @specodec
+    @codec
     model SingleUint64 {
       v: uint64;
     }
 
-    @specodec
+    @codec
     model SingleFloat32 {
       v: float32;
     }
 
-    @specodec
+    @codec
     model SingleFloat64 {
       v: float64;
     }
 
-    @specodec
+    @codec
     model SingleBytes {
       v: bytes;
     }
 
   }
   namespace Unions {
-    @specodec
+    @codec
     model UnionFieldHolder {
       shape: Shape;
       id: Ident;
     }
 
-    @specodec
+    @codec
     model OptUnionFieldHolder {
       shape?: Shape;
       name: string;
     }
 
-    @specodec
+    @codec
     model UnionArrayHolder {
       shapes: Shape[];
     }
 
-    @specodec
+    @codec
     model UnionMixedHolder {
       result: ResultMsg;
       tag: Tagged;
       count: int32;
     }
 
-    @specodec
+    @codec
     model UnionScalarHolder {
       id: Ident;
       sc: ScalarUnion;
       label: string;
     }
 
-    @specodec
+    @codec
     union Shape {
       circle: Coord,
       rect: Range32,
     }
 
-    @specodec
+    @codec
     union Ident {
       name: string,
       number: int32,
     }
 
-    @specodec
+    @codec
     union ResultMsg {
       ok: string,
       err: Label,
     }
 
-    @specodec
+    @codec
     union Tagged {
       tag: string,
       score: float64,
       active: boolean,
     }
 
-    @specodec
+    @codec
     union OptUnionHolder {
       shape: Shape,
       id: Ident,
     }
 
-    @specodec
+    @codec
     union MixedUnion {
       point: Coord,
       label: string,
       count: int32,
     }
 
-    @specodec
+    @codec
     union NestedUnion {
       result: ResultMsg,
       shape: Shape,
     }
 
-    @specodec
+    @codec
     union ScalarUnion {
       s: string,
       i: int32,
@@ -1525,7 +1525,7 @@ namespace AllTypes {
 
   }
   namespace Wide {
-    @specodec
+    @codec
     model Wide20 {
       f1: string;
       f2: boolean;
@@ -1549,7 +1549,7 @@ namespace AllTypes {
       f20: uint8;
     }
 
-    @specodec
+    @codec
     model Wide25 {
       f1: uint16;
       f2: uint32;
@@ -1578,7 +1578,7 @@ namespace AllTypes {
       f25: int64;
     }
 
-    @specodec
+    @codec
     model Wide30 {
       f1: boolean;
       f2: int8;
@@ -1612,7 +1612,7 @@ namespace AllTypes {
       f30: int32;
     }
 
-    @specodec
+    @codec
     model Wide35 {
       f1: uint32;
       f2: uint64;
@@ -1651,7 +1651,7 @@ namespace AllTypes {
       f35: int16;
     }
 
-    @specodec
+    @codec
     model Wide40 {
       f1: int8;
       f2: int16;
@@ -1697,7 +1697,7 @@ namespace AllTypes {
 
   }
   namespace nested {
-    @specodec
+    @codec
     model NestedSimple {
       name: string;
       value: int32;
@@ -1706,7 +1706,7 @@ namespace AllTypes {
   }
   namespace nested {
     namespace deep {
-      @specodec
+      @codec
       model DeepModel {
         payload: bytes;
         count: int64;
