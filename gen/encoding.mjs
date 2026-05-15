@@ -74,7 +74,7 @@ export function writeValueByType(val, w, field) {
   }
 }
 
-import { JsonWriter, GronWriter, MsgPackWriter } from "@specodec/specodec-ts";
+import { JsonWriter, GronWriter, MsgPackWriter } from "@specodec/specodec-runtime-typescript";
 
 export function specodecJson(data, modelName) {
   const w = new JsonWriter();

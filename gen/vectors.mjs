@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { encode as mpEncode } from "@msgpack/msgpack";
-import { MsgPackWriter } from "@specodec/specodec-ts";
+import { MsgPackWriter } from "@specodec/specodec-runtime-typescript";
 import { models, modelOrder, enums, enumOrder, unions, unionOrder, testModels } from "./definitions.mjs";
 import { scalarValue, getInstance } from "./instance.mjs";
 import {
