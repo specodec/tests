@@ -1,4 +1,4 @@
-import "@codec/typespec-emitter-core";
+import "@specodec/typespec-emitter-core";
 
 using Specodec;
 
