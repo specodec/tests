@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@msgpack/msgpack": "^3.1.0",
-    "@typespec/compiler": "^1.11.0",
+    "@typespec/compiler": "^1.12.0",
     "@specodec/specodec-ts": "github:specodec/specodec-runtime-ts"
   },
   "devDependencies": {

@@ -14,7 +14,7 @@ function tspType(type, opts = {}) {
 function emitModelTSP(name, indent) {
   const m = models[name];
   let s = '';
-  s += `${indent}@specodec\n${indent}model ${name} {\n`;
+  s += `${indent}@codec\n${indent}model ${name} {\n`;
   for (const field of m.fields) {
     const opt = field.optional ? "?" : "";
     const t = tspType(field.type, field);
@@ -26,7 +26,7 @@ function emitModelTSP(name, indent) {
 
 function emitEnumTSP(name, indent) {
   const e = enums[name];
-  let s = `${indent}@specodec\n${indent}enum ${name} {\n`;
+  let s = `${indent}@codec\n${indent}enum ${name} {\n`;
   for (const m of e.members) {
     s += `${indent}  ${m.name},\n`;
   }
@@ -36,7 +36,7 @@ function emitEnumTSP(name, indent) {
 
 function emitUnionTSP(name, indent) {
   const u = unions[name];
-  let s = `${indent}@specodec\n${indent}union ${name} {\n`;
+  let s = `${indent}@codec\n${indent}union ${name} {\n`;
   for (const vr of u.variants) {
     s += `${indent}  ${vr.name}: ${vr.type},\n`;
   }
@@ -87,7 +87,7 @@ export function emitTSP() {
     return s;
   }
 
-  let out = 'import "@specodec/typespec-emitter-core";\n\nusing Specodec.Core;\n\nnamespace AllTypes {\n';
+  let out = 'import "@specodec/typespec-emitter-core";\n\nusing Specodec;\n\nnamespace AllTypes {\n';
   for (const ns of [...allNamespaces].sort()) {
     out += emitNS(ns, 1);
   }
